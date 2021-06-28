@@ -49,15 +49,8 @@ Route::get('/edit-city/{id}',[CityController::class,'editCity']);
 Route::post('update-city/{id}',[CityController::class,'updateCity'])->name('update-city');
 
 // Category routes
-
-
-
 Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
-
 Route::get('/view-categories',[CategoryController::class,'viewCategories']);
-
 Route::get('/delete-category/{id}',[CategoryController::class,'deleteCategory']);
-
 Route::get('/edit-category/{id}',[CategoryController::class,'editCategory']);
-
 Route::post('/update-category/{id}',[CategoryController::class,'updateCategory'])->name('update-category');
