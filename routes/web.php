@@ -3,6 +3,7 @@
 use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,9 @@ Route::get('/add-city', function () {
     return view('admin.add-city');
 });
 
-
+Route::get('/add-category', function () {
+    return view('admin.add-category');
+});
 
 // unit Setion routes
 
@@ -47,9 +50,7 @@ Route::post('update-city/{id}',[CityController::class,'updateCity'])->name('upda
 
 // Category routes
 
-Route::get('/add-category', function () {
-    return view('admin.add-category');
-});
+
 
 Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
 

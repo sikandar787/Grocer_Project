@@ -361,13 +361,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ url('add-category') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Category</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ url('view-categories') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View Categories</p>
                                     </a>
