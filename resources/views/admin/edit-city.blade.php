@@ -35,6 +35,17 @@
                     <input type="text" name="ur_name" value={{ $city->ur_name }} class="form-control urduFont" id="name">
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="latitude" class="col-sm-2 col-form-label" >City Latitude </label>
+                <div class="col-sm-6">
+                    <input type="text" name="latitude" value="{{ $city->latitude }}" class="form-control "  id="latitude">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="longitude" class="col-sm-2 col-form-label" >City Longitude</label>
+                <div class="col-sm-6">
+                    <input type="text" name="longitude" value="{{ $city->longitude }}" class="form-control "  id="longitude">
+                </div>
         </div>
 
         <div class="card-footer">

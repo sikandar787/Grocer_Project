@@ -12,6 +12,8 @@ class City extends Model
         'name',
         'ur_name',
         'status',
+        'latitude',
+        'longitude'
 
     ];
 }

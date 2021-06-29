@@ -20,8 +20,10 @@
             <thead>
                 <tr>
                     <th>Sr. #</th>
-                    <th>Cities Name</th>
-                    <th>Cities Urdu Name</th>
+                    <th>City Name</th>
+                    <th>City Urdu Name</th>
+                    <th>City Latitude</th>
+                    <th>City Longitude</th>
                     {{-- <th>Status</th> --}}
                     <th>Action</th>
                 </tr>
@@ -32,6 +34,8 @@
                     <th class="text-right align-middle">{{$key+1}}</th>
                     <td class=" align-middle">{{$city->name}}</td>
                     <td class=" align-middle">{{$city->ur_name}}</td>
+                    <td class=" align-middle">{{$city->latitude}}</td>
+                    <td class=" align-middle">{{$city->longitude}}</td>
                     <td class=" text-center align-middle">
                         <a href="edit-city/{{$city->id}}">
                             <i class="fas fa-edit text-primary"></i>

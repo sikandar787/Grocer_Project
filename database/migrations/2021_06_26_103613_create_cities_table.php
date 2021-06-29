@@ -18,6 +18,8 @@ class CreateCitiesTable extends Migration
             $table->string('name');
             $table->string('ur_name');
             $table->integer('status')->default('1')->comment('1 for active City & 0 for inactive City');
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

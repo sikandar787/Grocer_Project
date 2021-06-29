@@ -10,11 +10,16 @@ class CityController extends Controller
 
         $this->validate($request,[
             'name' => 'required|unique:cities',
-            'ur_name'=> 'required|unique:cities'
+            'ur_name'=> 'required|unique:cities',
+            'latitude'=> 'required|unique:cities',
+            'longitude'=> 'required|unique:cities'
         ]);
 
         $city = new City();
         $city->Create($request->except('_token'));
+        $city -> latitude = $request->latitude;
+        $city -> longitude = $request->longitude;
+        $city -> save();
         return redirect('view-cities');
 
     }
@@ -46,7 +51,9 @@ class CityController extends Controller
 
          $this->validate($req,[
             'name' => 'required|unique:cities',
-            'ur_name'=> 'required|unique:cities'
+            'ur_name'=> 'required|unique:cities',
+            'latitude'=> 'required|unique:cities',
+            'longitude'=> 'required|unique:cities'
         ]);
 
         $unit->Update($req->except('_token'));

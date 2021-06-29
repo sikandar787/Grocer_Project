@@ -26,13 +26,25 @@
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">City Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="name" class="form-control" id="name">
+                    <input type="text" name="name" class="form-control" id="name" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label" >City Urdu Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_name" class="form-control urduFont"  id="name">
+                    <input type="text" name="ur_name" class="form-control urduFont"  id="name" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="latitude" class="col-sm-2 col-form-label" >City Latitude </label>
+                <div class="col-sm-6">
+                    <input type="text" name="latitude" class="form-control "  id="latitude" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="longitude" class="col-sm-2 col-form-label" >City Longitude</label>
+                <div class="col-sm-6">
+                    <input type="text" name="longitude" class="form-control "  id="longitude" required>
                 </div>
             </div>
         </div>
