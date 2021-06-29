@@ -17,9 +17,9 @@ class CityController extends Controller
 
         $city = new City();
         $city->Create($request->except('_token'));
-        $city -> latitude = $request->latitude;
-        $city -> longitude = $request->longitude;
-        $city -> save();
+        // $city -> latitude = $request->latitude;
+        // $city -> longitude = $request->longitude;
+        // $city -> save();
         return redirect('view-cities');
 
     }
