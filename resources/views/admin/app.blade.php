@@ -431,6 +431,33 @@
                                     <!-- Category Nav End -->
                                 </li>
                                 {{-- City Nav End --}}
+
+                                <!-- Area Nav -->
+                        <li class="nav-item">
+                            <a href="#"
+                                class="nav-link {{ ( request()->is('add-area') || request()->is('view-areas') )  ? 'active' : ''  }}">
+                                <i class="nav-icon fas fa-folder"></i>
+                                <p>
+                                    Areas
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('add-area') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Area</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('view-areas') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Areas</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Area Nav End -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
