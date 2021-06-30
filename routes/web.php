@@ -32,6 +32,10 @@ Route::get('/add-category', function () {
     return view('admin.add-category');
 });
 
+Route::get('/add-area', function () {
+    return view('admin.add-area');
+});
+
 // unit Setion routes
 
 
@@ -62,3 +66,8 @@ Route::post('/update-category/{id}',[CategoryController::class,'updateCategory']
 
 
 //Area Routes
+Route::post('/add-area', [AreaController::class, 'addArea'])->name('add-area');
+Route::get('/view-areas',[AreaController::class,'viewAreas']);
+Route::get('/delete-area/{id}',[AreaController::class,'deleteArea']);
+Route::get('/edit-area/{id}',[AreaController::class,'editArea']);
+Route::post('/update-area/{id}',[AreaController::class,'updateArea'])->name('update-area');
