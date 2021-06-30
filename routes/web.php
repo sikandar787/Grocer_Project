@@ -62,6 +62,10 @@ Route::get('delete-city/{id}', [CityController::class, 'destroyCities']);
 Route::get('/edit-city/{id}',[CityController::class,'editCity']);
 Route::post('update-city/{id}',[CityController::class,'updateCity'])->name('update-city');
 
+//area routes
+Route::get('add-area', [AreaController::class, 'addArea']);
+
+
 // Category routes
 Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
 Route::get('/view-categories',[CategoryController::class,'viewCategories']);
