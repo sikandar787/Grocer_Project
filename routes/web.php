@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,14 @@ Route::get('/add-area', function () {
     return view('admin.add-area');
 });
 
+Route::get('/add-product', function () {
+    return view('admin.add-product');
+});
+
+Route::get('/add-product', [ProductController::class, 'getCategories']);
+
+Route::get('/edit-product', [ProductController::class, 'getCategories']);
+
 // unit Setion routes
 
 
@@ -53,6 +62,10 @@ Route::get('delete-city/{id}', [CityController::class, 'destroyCities']);
 Route::get('/edit-city/{id}',[CityController::class,'editCity']);
 Route::post('update-city/{id}',[CityController::class,'updateCity'])->name('update-city');
 
+//area routes
+Route::get('add-area', [AreaController::class, 'addArea']);
+
+
 // Category routes
 Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
 Route::get('/view-categories',[CategoryController::class,'viewCategories']);
@@ -67,3 +80,10 @@ Route::get('/view-areas',[AreaController::class,'viewAreas']);
 Route::get('/delete-area/{id}',[AreaController::class,'deleteArea']);
 Route::get('/edit-area/{id}',[AreaController::class,'editArea']);
 Route::post('/update-area/{id}',[AreaController::class,'updateArea'])->name('update-area');
+
+// Product routes
+Route::post('/add-product', [ProductController::class, 'addProduct'])->name('add-product');
+Route::get('/view-products',[ProductController::class,'viewProducts']);
+Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
+Route::get('/edit-product/{id}',[ProductController::class,'editProduct']);
+Route::post('/update-product/{id}',[ProductController::class,'updateProduct'])->name('update-product');

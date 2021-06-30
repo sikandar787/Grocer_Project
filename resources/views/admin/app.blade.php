@@ -458,6 +458,33 @@
                                 </li>
                             </ul>
                             <!-- Area Nav End -->
+
+                            <!-- Product Nav -->
+                        <li class="nav-item">
+                            <a href="#"
+                                class="nav-link {{ ( request()->is('add-product') || request()->is('view-products') )  ? 'active' : ''  }}">
+                                <i class="nav-icon fas fa-folder"></i>
+                                <p>
+                                    Products
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('add-product') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Product</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('view-products') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Products</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Product Nav End -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
@@ -557,7 +584,6 @@
     <!-- <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script> -->
-    <script src="{{asset('admin/plugins/custom.js')}}"></script>
     <!-- Page specific script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
