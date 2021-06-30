@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -16,16 +17,10 @@ class AreaController extends Controller
             $this->validate($req,[
                 'name' => 'required',
                 'ur_name' => 'required',
-                'city_id' => 'required',
                 'latitude' => 'required',
                 'longitude' => 'required',
                 'coverage_km' => 'required',
             ]);
-            // $area->name = $req->name;
-            // $area->ur_name = $req->ur_name;
-            // $area->description = $req->description;
-            // $area->ur_description = $req->ur_description;
-            // $area->save();
         $area->Create($req->except('_token'));
         return redirect('view-areas');
     }
@@ -62,19 +57,22 @@ class AreaController extends Controller
 
     public function updateArea($id,Request $req)
     {
-        $area = new Area();
-        $req->validate([
-                'name' => 'required',
-                'ur_name' => 'required',
-                'city_id' => 'required',
-                'latitude' => 'required',
-                'longitude' => 'required',
-                'coverage_km' => 'required',
+        $area = Area::find($id);
+        $this->validate($req,[
+            'name' => 'required',
+            'ur_name' => 'required',
+            'city_id' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'coverage_km' => 'required'
         ]);
-
-        $area->save();
-
+        $area->Update($req->except('_token'));
         return redirect('view-areas');
+    }
+
+    public function enterArea(){
+        $cities = City::where('status',1)->get();
+        return view('admin.add-area')->with(compact('cities'));
     }
 
 }

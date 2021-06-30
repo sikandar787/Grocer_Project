@@ -445,7 +445,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('add-area') }}" class="nav-link">
+                                    <a href="{{ url('enter-area') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Area</p>
                                     </a>

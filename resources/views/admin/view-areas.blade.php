@@ -8,7 +8,7 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title"></h3>
-        <a href="{{url('add-area')}}" class=" btn btn-primary card-title float-right">Add Area</a>
+        <a href="{{url('enter-area')}}" class=" btn btn-primary card-title float-right">Add Area</a>
     </div>
     <div id="notifDiv"
         style="z-index:10000; display: none; background: green; font-weight: 450; width: 350px; position: fixed; top: 32%; left: 22%;  color: white; padding: 5px 20px">
@@ -61,7 +61,7 @@
                         @endif
                     </td> --}}
                     <td class=" text-center align-middle">
-                        <a href="edit-category/{{$area->id}}">
+                        <a href="edit-area/{{$area->id}}">
                             <i class="fas fa-edit text-primary"></i>
                         </a>
                         <a href="delete-category/{{$area->id}}">

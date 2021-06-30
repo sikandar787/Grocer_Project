@@ -32,10 +32,6 @@ Route::get('/add-category', function () {
     return view('admin.add-category');
 });
 
-Route::get('/add-area', function () {
-    return view('admin.add-area');
-});
-
 // unit Setion routes
 
 
@@ -53,10 +49,6 @@ Route::get('delete-city/{id}', [CityController::class, 'destroyCities']);
 Route::get('/edit-city/{id}',[CityController::class,'editCity']);
 Route::post('update-city/{id}',[CityController::class,'updateCity'])->name('update-city');
 
-//area routes
-Route::get('add-area', [AreaController::class, 'addArea']);
-
-
 // Category routes
 Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
 Route::get('/view-categories',[CategoryController::class,'viewCategories']);
@@ -66,6 +58,7 @@ Route::post('/update-category/{id}',[CategoryController::class,'updateCategory']
 
 
 //Area Routes
+Route::get('/enter-area', [AreaController::class, 'enterArea']);
 Route::post('/add-area', [AreaController::class, 'addArea'])->name('add-area');
 Route::get('/view-areas',[AreaController::class,'viewAreas']);
 Route::get('/delete-area/{id}',[AreaController::class,'deleteArea']);
