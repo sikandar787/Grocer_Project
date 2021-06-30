@@ -4,6 +4,7 @@ use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AreaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +48,10 @@ Route::get('view-cities', [CityController::class, 'viewCities']);
 Route::get('delete-city/{id}', [CityController::class, 'destroyCities']);
 Route::get('/edit-city/{id}',[CityController::class,'editCity']);
 Route::post('update-city/{id}',[CityController::class,'updateCity'])->name('update-city');
+
+//area routes
+Route::get('add-area', [AreaController::class, 'addArea']);
+
 
 // Category routes
 Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
