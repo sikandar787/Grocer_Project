@@ -50,13 +50,6 @@ Route::get('/add-product', [ProductController::class, 'getCategories']);
 
 Route::get('/edit-product', [ProductController::class, 'getCategories']);
 
-<<<<<<< HEAD
-Route::get('/add-shop', [ShopController::class, 'getCities']);
-
-Route::get('/edit-shop', [ShopController::class, 'getCities']);
-
-=======
->>>>>>> 922020cfd4928b485771e8865c0f0cc9ca064ef0
 // unit Setion routes
 
 

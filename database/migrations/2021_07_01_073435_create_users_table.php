@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('map_address');
             $table->double('latitude');
             $table->double('longitude');
+            $table->integer('city_id');
+            $table->integer('area_id');
             $table->string('complete_address');
             $table->string('api_token');
             $table->enum('kick_out_from_promotion',['0','1',""])->comment('0 for Ban && 1 for Active')->default(0);
