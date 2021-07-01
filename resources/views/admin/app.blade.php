@@ -485,6 +485,33 @@
                                 </li>
                             </ul>
                             <!-- Product Nav End -->
+
+                            <!-- Shops Nav -->
+                        <li class="nav-item">
+                            <a href="#"
+                                class="nav-link {{ ( request()->is('add-shop') || request()->is('view-shops') )  ? 'active' : ''  }}">
+                                <i class="nav-icon fas fa-folder"></i>
+                                <p>
+                                    Shops
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('add-shop') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Shop</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('view-shops') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Shops</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Shops Nav End -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
