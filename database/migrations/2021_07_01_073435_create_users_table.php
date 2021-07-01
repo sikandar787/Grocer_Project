@@ -17,8 +17,18 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->bigInteger('phone_number');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('map_address');
+            $table->double('latitude');
+            $table->double('longitude');
+            $table->integer('city_id');
+            $table->integer('area_id');
+            $table->string('complete_address');
+            $table->string('api_token');
+            $table->enum('kick_out_from_promotion',['0','1',""])->comment('0 for Ban && 1 for Active')->default(0);
+            $table->enum('status',['0','1'])->comment('0 for Inactive && 1 for Active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

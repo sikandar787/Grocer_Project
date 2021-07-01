@@ -38,13 +38,13 @@
             <div class="form-group row">
                 <label for="latitude" class="col-sm-2 col-form-label" >City Latitude </label>
                 <div class="col-sm-6">
-                    <input type="number" name="latitude" value="{{ $city->latitude }}" class="form-control "  id="latitude">
+                    <input type="double" name="latitude" value="{{ $city->latitude }}" class="form-control "  id="latitude">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="longitude" class="col-sm-2 col-form-label" >City Longitude</label>
                 <div class="col-sm-6">
-                    <input type="number" name="longitude" value="{{ $city->longitude }}" class="form-control "  id="longitude">
+                    <input type="double" name="longitude" value="{{ $city->longitude }}" class="form-control "  id="longitude">
                 </div>
         </div>
 
