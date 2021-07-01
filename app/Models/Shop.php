@@ -32,6 +32,6 @@ class Shop extends Model
     }
 
     public function areas() {
-        return $this->hasOne('App\Models\Unit', 'id', 'area_id');
+        return $this->hasOne('App\Models\Area', 'id', 'area_id');
     }
 }
