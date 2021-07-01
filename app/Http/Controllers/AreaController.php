@@ -47,7 +47,8 @@ class AreaController extends Controller
         // {
 
         $area =  Area::find($id);
-        return view('admin.edit-area', compact('area'));
+        $cities = City::where('status',1)->get();
+        return view('admin.edit-area', compact('area', 'cities'));
 
     // }else{
     //         // return back()->with('privilege', 'Your do not have any privilege to add product.');
