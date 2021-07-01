@@ -33,8 +33,6 @@ Route::get('/add-category', function () {
     return view('admin.add-category');
 });
 
-<<<<<<< HEAD
-=======
 Route::get('/add-area', function () {
     return view('admin.add-area');
 });
@@ -47,7 +45,6 @@ Route::get('/add-product', [ProductController::class, 'getCategories']);
 
 Route::get('/edit-product', [ProductController::class, 'getCategories']);
 
->>>>>>> b268b7e3fece830552089e247116f95a3047cca8
 // unit Setion routes
 
 
