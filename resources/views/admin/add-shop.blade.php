@@ -178,18 +178,6 @@
                 </div>
             </div>
 
-            @if($errors->first('status'))
-            <div class="alert alert-danger">
-                {{$errors->first('status')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Status</label>
-                <div class="col-sm-6">
-                    <input type="text" name="status" class="form-control" id="shop" placeholder="Status">
-                </div>
-            </div>
-
             @if($errors->first('image'))
             <div class="alert alert-danger">
                 {{$errors->first('image')}}
