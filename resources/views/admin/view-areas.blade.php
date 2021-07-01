@@ -64,7 +64,7 @@
                         <a href="edit-area/{{$area->id}}">
                             <i class="fas fa-edit text-primary"></i>
                         </a>
-                        <a href="delete-category/{{$area->id}}">
+                        <a href="delete-area/{{$area->id}}">
                             <i class="fas fa-trash text-danger"></i>
                         </a>
                     </td>

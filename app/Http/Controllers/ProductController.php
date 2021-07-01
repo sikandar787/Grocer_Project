@@ -89,7 +89,6 @@ class ProductController extends Controller
 
         $categories = Category::get();
         $units = Unit::get();
-
         $product =  Product::find($id);
         // $products = Product::with('categories', 'units')->orderBy('id','DESC')->get();
         return view('admin.edit-product', compact('product', 'categories', 'units'));
