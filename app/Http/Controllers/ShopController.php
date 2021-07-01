@@ -15,6 +15,7 @@ class ShopController extends Controller
     public function getCities()
     {
         $cities = City::get();
+        return $cities;
         $areas = Area::get();
         return view('admin.add-shop')->with(compact('cities', 'areas'));
     }
