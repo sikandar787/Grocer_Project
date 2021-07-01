@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,10 +42,21 @@ Route::get('/add-product', function () {
     return view('admin.add-product');
 });
 
+Route::get('/add-shop', function () {
+    return view('admin.add-shop');
+});
+
 Route::get('/add-product', [ProductController::class, 'getCategories']);
 
 Route::get('/edit-product', [ProductController::class, 'getCategories']);
 
+<<<<<<< HEAD
+Route::get('/add-shop', [ShopController::class, 'getCities']);
+
+Route::get('/edit-shop', [ShopController::class, 'getCities']);
+
+=======
+>>>>>>> 922020cfd4928b485771e8865c0f0cc9ca064ef0
 // unit Setion routes
 
 
@@ -84,3 +96,10 @@ Route::get('/view-products',[ProductController::class,'viewProducts']);
 Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
 Route::get('/edit-product/{id}',[ProductController::class,'editProduct']);
 Route::post('/update-product/{id}',[ProductController::class,'updateProduct'])->name('update-product');
+
+// Shop routes
+Route::post('/add-shop', [ShopController::class, 'addShop'])->name('add-shop');
+Route::get('/view-shops',[ShopController::class,'viewShops']);
+Route::get('/delete-shop/{id}',[ShopController::class,'deleteShop']);
+Route::get('/edit-shop/{id}',[ShopController::class,'editShop']);
+Route::post('/update-shop/{id}',[ShopController::class,'updateShop'])->name('update-shop');
