@@ -46,7 +46,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="description" class="form-control" id="shop" placeholder="Description">
+                    <textarea name="description" class="form-control" id="description" cols="10" rows="3"></textarea>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Urdu Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_description" class="form-control urduFont" id="shop" placeholder="تفصیل درج کریں">
+                    <textarea name="ur_description" class="form-control urduFont" id="ur_description" cols="10" rows="3"></textarea>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Mobile No.</label>
                 <div class="col-sm-6">
-                    <input type="number" name="number" class="form-control" id="shop" placeholder="Mobile No.">
+                    <input type="text" name="number" class="form-control" id="shop" placeholder="Mobile No.">
                 </div>
             </div>
 
@@ -144,15 +144,15 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="city_id">
+                    <select class="form-control select2" name="city_id">
                         <option disabled selected hidden>Select City</option>
+                        @if($cities->count())
                         @foreach($cities as $city)
-                        @if($city->count())
                         <option class="mt-5 p-5" value="{{$city->id}}">{{$city->name}}</option>
+                        @endforeach
                         @else
                         <option>No Cities Found</option>
                         @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -165,15 +165,15 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="area_id">
+                    <select class="form-control select2" name="area_id">
                         <option disabled selected hidden>Select Area</option>
+                        @if($areas->count())
                         @foreach($areas as $area)
-                        @if($area->count())
                         <option class="mt-5 p-5" value="{{$area->id}}">{{$area->name}}</option>
+                        @endforeach
                         @else
                         <option>No Areas Found</option>
                         @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -193,7 +193,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Add</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-shops') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>

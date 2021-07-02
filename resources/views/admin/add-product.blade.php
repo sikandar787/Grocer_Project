@@ -46,7 +46,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="description" class="form-control" id="product" placeholder="Description">
+                    <textarea name="description" class="form-control" id="description" cols="10" rows="3"></textarea>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Urdu Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_description" class="form-control urduFont" id="product" placeholder="تفصیل درج کریں">
+                    <textarea name="ur_description"class="form-control urduFont" id="description" cols="10" rows="3"></textarea>
                 </div>
             </div>
 
@@ -70,15 +70,15 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Category</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="category_id">
+                    <select class="form-control select2" name="category_id">
                         <option disabled selected hidden>Select Category</option>
+                        @if($categories->count())
                         @foreach($categories as $category)
-                        @if($category->count())
                         <option class="mt-5 p-5" value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                         @else
                         <option>No Categories Found</option>
                         @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -141,13 +141,13 @@
                 <div class="col-sm-6">
                     <select class="form-control" name="unit_id">
                         <option disabled selected hidden>Select Unit</option>
+                        @if($units->count())
                         @foreach($units as $unit)
-                        @if($unit->count())
                         <option class="mt-5 p-5" value="{{$unit->id}}">{{$unit->name}}</option>
+                        @endforeach
                         @else
                         <option>No Units Found</option>
                         @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -190,7 +190,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Add</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-products') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>

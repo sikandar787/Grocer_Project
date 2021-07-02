@@ -11,7 +11,7 @@
     <!-- form start -->
 
 
-    <form class="form-horizontal" method="POST" action="{{ route('edit-shop') }}" enctype="multipart/form-data">
+    <form class="form-horizontal" method="POST" action="{{route('update-shop', $shop->id)}}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             @if($errors->first('name'))
@@ -46,7 +46,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="description" value="{{ $shop->description }}" class="form-control" id="shop" placeholder="Description">
+                    <textarea name="description" class="form-control" id="description" cols="10" rows="3">{{ $shop->description }}</textarea>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Urdu Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_description" value="{{ $shop->ur_description }}" class="form-control urduFont" id="shop" placeholder="تفصیل درج کریں">
+                    <textarea name="ur_description" class="form-control urduFont" id="ur_description" cols="10" rows="3">{{ $shop->ur_description }}</textarea>
                 </div>
             </div>
 
@@ -144,15 +144,18 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="city_id" value="{{ $shop->city_id }}">
+                    <select class="form-control select2" name="city_id">
                         <option disabled selected hidden>Select City</option>
+                        @if($cities->count())
                         @foreach($cities as $city)
-                        @if($city->count())
-                        <option class="mt-5 p-5" value="{{$city->id}}">{{$city->name}}</option>
+                        <option class="mt-5 p-5" value="{{$city->id}}" @if($city->id ==
+                            $shop->city_id) selected @endif>
+                            {{$city->name}}
+                        </option>
+                        @endforeach
                         @else
                         <option>No Cities Found</option>
                         @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -165,28 +168,19 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="area_id" value="{{ $shop->area_id }}">
+                    <select class="form-control select2" name="area_id">
                         <option disabled selected hidden>Select Area</option>
+                        @if($areas->count())
                         @foreach($areas as $area)
-                        @if($area->count())
-                        <option class="mt-5 p-5" value="{{$area->id}}">{{$area->name}}</option>
+                        <option class="mt-5 p-5" value="{{$area->id}}" @if($area->id ==
+                            $shop->area_id) selected @endif>
+                            {{$area->name}}
+                        </option>
+                        @endforeach
                         @else
                         <option>No Areas Found</option>
                         @endif
-                        @endforeach
                     </select>
-                </div>
-            </div>
-
-            @if($errors->first('status'))
-            <div class="alert alert-danger">
-                {{$errors->first('status')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Status</label>
-                <div class="col-sm-6">
-                    <input type="text" name="status" value="{{ $shop->status }}" class="form-control" id="shop" placeholder="Status">
                 </div>
             </div>
 
@@ -205,7 +199,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Add</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-shops') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>

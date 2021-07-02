@@ -16,6 +16,20 @@
         enctype="multipart/form-data">
         @csrf
         <div class="card-body">
+
+            {{-- @if($errors->first('city_id'))
+            <div class="alert alert-danger">
+                {{$errors->first('city_id')}}
+            </div>
+            @endif --}}
+            <div class="form-group row mt-5">
+                <label for="city_id" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-6">
+                    {{-- <input type="hidden" name="city_id" class="form-control"> --}}
+                    <input type="text" value="{{$city->name}}" class="form-control" readonly>
+                </div>
+            </div>
+
             @if($errors->first('name'))
             <div class="alert alert-danger">
                 {{$errors->first('name')}}
@@ -58,7 +72,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Edit</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-areas') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>
