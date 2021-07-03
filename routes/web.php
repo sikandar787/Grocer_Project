@@ -129,10 +129,6 @@ Route::get('/view-shops',[ShopController::class,'viewShops']);
 Route::get('/delete-shop/{id}',[ShopController::class,'deleteShop']);
 Route::get('/edit-shop/{id}',[ShopController::class,'editShop']);
 Route::post('/update-shop/{id}',[ShopController::class,'updateShop'])->name('update-shop');
-<<<<<<< HEAD
-Route::get('/get-area',[ShopController::class,'getArea']);
-=======
 Route::get('shop/update-status/{id}',[ShopController::class,'statusUpdateShops']);
 
 });
->>>>>>> 70e2be2bed336ca9ee6be96c469cf0a9aea0c093
