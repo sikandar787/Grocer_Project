@@ -48,7 +48,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="description" value = {{ $product->description }} class="form-control" id="product" placeholder="Description">
+                    <textarea name="description" class="form-control" id="description" cols="10" rows="3">{{ $product->description }}</textarea>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Urdu Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_description" value = {{ $product->ur_description }} class="form-control urduFont" id="product" placeholder="تفصیل درج کریں">
+                    <textarea name="ur_description"class="form-control urduFont" id="description" cols="10" rows="3">{{ $product->ur_description }}</textarea>
                 </div>
             </div>
 
@@ -72,15 +72,18 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Category</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="category_id" value = {{ $product->category_id }}>
+                    <select class="form-control select2" name="category_id">
                         <option disabled selected hidden>Select Category</option>
+                        @if($categories->count())
                         @foreach($categories as $category)
-                        @if($category->count())
-                        <option class="mt-5 p-5" value="{{$category->id}}" selected>{{$category->name}}</option>
+                        <option class="mt-5 p-5" value="{{$category->id}}" @if($category->id ==
+                            $product->category_id) selected @endif>
+                            {{$category->name}}
+                        </option>
+                        @endforeach
                         @else
                         <option>No Categories Found</option>
                         @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -143,13 +146,16 @@
                 <div class="col-sm-6">
                     <select class="form-control" name="unit_id" value = {{ $product->unit_id }}>
                         <option disabled selected hidden>Select Unit</option>
+                        @if($units->count())
                         @foreach($units as $unit)
-                        @if($unit->count())
-                        <option class="mt-5 p-5" value="{{$unit->id}}" selected>{{$unit->name}}</option>
+                        <option class="mt-5 p-5" value="{{$unit->id}}" @if($unit->id ==
+                            $product->unit_id) selected @endif>
+                            {{$unit->name}}
+                        </option>
+                        @endforeach
                         @else
                         <option>No Units Found</option>
                         @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -169,10 +175,10 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Featured</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="is_featured" value = {{ $product->is_featured }}>
+                    <select class="form-control" name="is_featured">
                         <option disabled selected hidden>Select Option</option>
-                        <option class="mt-5 p-5" {{ ($product->is_featured) == '0' ? 'selected' : ''}} value="Not Featured">Not Featured</option>
-                        <option class="mt-5 p-5" {{ ($product->is_featured) == '1' ? 'selected' : ''}} value="Featured">Featured</option>
+                        <option class="mt-5 p-5" {{ ($product->is_featured) == '0' ? 'selected' : ''}} value="0">Not Featured</option>
+                        <option class="mt-5 p-5" {{ ($product->is_featured) == '1' ? 'selected' : ''}} value="1">Featured</option>
                     </select>
                 </div>
             </div>
@@ -192,7 +198,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Edit</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-products') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>

@@ -48,15 +48,25 @@
                 <div class="col-sm-6">
                     <input type="text" name="coverage_km" class="form-control" id="category" placeholder="Coverage Area (Km)">
                 </div>
-            </div>   
-
+            </div>
+            <div class="form-group row">
+                <label for="area" class="col-sm-2 col-form-label" >Select City</label>
+                <div class="col-sm-6">
+                    <select name="" id="cities" class="form-control select2" onchange="getCity()" required>
+                        <option value="0">Select City</option>
+                        @foreach($cities as $city)
+                            <option value='{{$city->id}},{{$city->latitude}},{{$city->longitude}}'>{{$city->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             @include('admin.map')
-    
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
             <input type="submit" class="btn btn-info" value="Add">
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-areas') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>

@@ -24,7 +24,6 @@ class Shop extends Model
         'coverage_km',
         'city_id',
         'area_id',
-        'status',
     ];
 
     public function cities() {
