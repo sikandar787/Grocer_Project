@@ -1,5 +1,6 @@
 @extends('admin.app')
 @section('title','View Units')
+
 @section('header_title','Dashboard')
 @section('maincontent')
 
@@ -17,10 +18,12 @@
     <!-- /.card-header -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
+            {{ session('msg') }}
             <thead>
                 <tr>
                     <th>Sr. #</th>
                     <th>Name</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -29,7 +32,21 @@
                 <tr>
                     <th class="text-right align-middle">{{$key+1}}</th>
                     <td class=" align-middle">{{$unit->name}}</td>
+                    <td class="text-center align-middle">
+                        @if($unit->status == 1)
+                        <a href="unit/update-status/{{ $unit->id }}" class="btn btn-success">
+                            Active
+                        </a>
+
+                        @else
+                        <a href="unit/update-status/{{ $unit->id }}" class="btn btn-danger">
+                            Inactive
+                        </a>
+
+                        @endif
+                    </td>
                     <td class=" text-center align-middle">
+
                         <a href="edit-unit/{{$unit->id}}">
                             <i class="fas fa-edit text-primary"></i>
                         </a>

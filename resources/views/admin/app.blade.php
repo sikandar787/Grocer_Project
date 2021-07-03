@@ -347,12 +347,19 @@
                                 </p>
                             </a>
                         </li>
-
+                        {{-- Profile Nav --}}
+                        <li class="nav-item">
+                            <a href="{{ url('edit-profile') }}" class="nav-link">
+                                <i class="fas fa-user-edit"></i>
+                                <p class="text">Profile</p>
+                            </a>
+                        </li>
+                        {{-- ! Profile Nav End --}}
                         <!-- Category Nav -->
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-category') || request()->is('view-categories') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-folder"></i>
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>
                                     Categories
                                     <i class="fas fa-angle-left right"></i>
@@ -379,7 +386,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-unit') || request()->is('view-unit') ) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-folder"></i>
+                                <i class="nav-icon fas fa-weight"></i>
                                 <p>
                                     Units
                                     <i class="fas fa-angle-left right"></i>
@@ -387,7 +394,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
+                                <li class="nav-item" >
                                     <a href="{{ url('add-unit') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Unit</p>
@@ -407,7 +414,7 @@
                                 <li class="nav-item">
                                     <a href="#"
                                         class="nav-link {{ ( request()->is('add-city') || request()->is('view-cities') ) ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-folder"></i>
+                                        <i class="nav-icon fas fa-city"></i>
                                         <p>
                                             Cities
                                             <i class="fas fa-angle-left right"></i>
@@ -436,7 +443,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-area') || request()->is('view-areas') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-folder"></i>
+                                <i class="nav-icon fas fa-map"></i>
                                 <p>
                                     Areas
                                     <i class="fas fa-angle-left right"></i>
@@ -490,7 +497,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-shop') || request()->is('view-shops') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-folder"></i>
+                                <i class="nav-icon fas fa-store"></i>
                                 <p>
                                     Shops
                                     <i class="fas fa-angle-left right"></i>
@@ -513,7 +520,7 @@
                             </ul>
                             <!-- Shops Nav End -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('signout') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p class="text">Logout</p>
                             </a>

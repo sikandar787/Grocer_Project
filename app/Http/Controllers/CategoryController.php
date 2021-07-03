@@ -109,5 +109,22 @@ class CategoryController extends Controller
 
         return redirect('view-categories');
     }
+    public function statusUpdateCategories( $id)
+     {
+        $category = DB::table('categories')->select('status')->where('id', $id)->first();
+
+
+        if($category->status == '1'){
+            $status= '0';
+
+        }else{
+            $status= '1';
+        }
+
+        $values= array('status'=> $status);
+        DB::table('categories')->where('id', $id)->update($values);
+        session()->flash('msg', 'Category Status Updated Successfully');
+        return redirect('view-categories');
+     }
 
 }

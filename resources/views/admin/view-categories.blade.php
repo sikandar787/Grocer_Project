@@ -24,8 +24,7 @@
                     <th>Urdu Name</th>
                     <th>Description</th>
                     <th>Urdu Description</th>
-
-                    {{-- <th>Status</th> --}}
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -43,22 +42,19 @@
                     <td class=" align-middle">{{$category->ur_name}}</td>
                     <td class=" align-middle">{{$category->description}}</td>
                     <td class=" align-middle">{{$category->ur_description}}</td>
-                    <!-- <td>{{$category->status}}</td> -->
-                    {{-- <td class="text-center align-middle">
+                    <td class="text-center align-middle">
                         @if($category->status == 1)
-                        <button
-                            class="pushy__btn pushy__btn--sm pushy__btn--red change_status_btn enable_disable_category"
-                            id="{{$category->id}}">Disable</button>
+                        <a href="category/update-status/{{ $category->id }}" class="btn btn-success">
+                            Active
+                        </a>
+
                         @else
-                        <button
-                            class="pushy__btn pushy__btn--sm pushy__btn--green change_status_btn enable_disable_category"
-                            id="{{$category->id}}">Enable</button>
-                        <!-- <label class="switch">
-                            <input type="checkbox" class="enable_disable_product" id="{{$category->id}}" checked>
-                            <span class="slider round"></span>
-                        </label> -->
+                        <a href="category/update-status/{{ $category->id }}" class="btn btn-danger">
+                            Inactive
+                        </a>
+
                         @endif
-                    </td> --}}
+                    </td>
                     <td class=" text-center align-middle">
                         <a href="edit-category/{{$category->id}}">
                             <i class="fas fa-edit text-primary"></i>

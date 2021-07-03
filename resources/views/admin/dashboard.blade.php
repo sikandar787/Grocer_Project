@@ -18,10 +18,26 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ url('view-products') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-dark">
+                    <div class="inner">
+                        <h3>1
+                            <!-- <sup style="font-size: 20px">%</sup> -->
+                        </h3>
+
+                        <p>Categories</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{ url('view-categories') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
@@ -30,12 +46,12 @@
                             <!-- <sup style="font-size: 20px">%</sup> -->
                         </h3>
 
-                        <p>Orders</p>
+                        <p>Cities</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-map"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ url('view-cities') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -45,30 +61,32 @@
                     <div class="inner">
                         <h3>1</h3>
 
-                        <p>Salesmen</p>
+                        <p>Areas</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="ion ion-map"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ url('view-areas') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-danger">
+                <div class="small-box bg-secondary">
                     <div class="inner">
                         <h3>1</h3>
 
-                        <p>Shopkeepers</p>
+                        <p>Shops</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="ion ion-cart "></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="view-shops" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
+
             </div>
             <!-- ./col -->
+
         </div>
         <!-- /.row -->
 
