@@ -1,16 +1,7 @@
     <div class="form-group row">
-        {{-- <label for="area" class="col-sm-2 col-form-label" >Select City</label>
-        <div class="col-sm-6">
-            <select name="" id="cities" class="form-control select2" onchange="getCity()" required>
-                <option value="0">Select City</option>
-                @foreach($cities as $city)
-                    <option value='{{$city->id}},{{$city->latitude}},{{$city->longitude}}'>{{$city->name}}</option>
-                @endforeach
-            </select>
-        </div> --}}
         <input type="hidden" name="latitude" class="form-control" id="lats" placeholder="Latitude">
         <input type="hidden" name="longitude" class="form-control" id="longs" placeholder="Longitude">
-        {{-- <input type="hidden" name="city_id" class="form-control" id="city" placeholder="Longitude"> --}}
+        <input type="hidden" name="city_id" class="form-control" id="city" placeholder="Longitude">
     </div>
     <!--map -->
     <div id="map" style="height: 100%; padding-top: 500px;"></div>
@@ -34,6 +25,11 @@
     // Create the initial InfoWindow.
     let infoWindow = new google.maps.InfoWindow({
     });
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        title:"Hello World!"
+    });
+    marker.setMap(map);
     infoWindow.open(map);
     map.addListener("click", (mapsMouseEvent) => {
         // Close the current InfoWindow.

@@ -144,14 +144,11 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-                    <select class="form-control select2" name="city_id">
+                    <select class="form-control" name="city_id" onchange="showArea()" id="citySelector">
                         <option disabled selected hidden>Select City</option>
                         @if($cities->count())
                         @foreach($cities as $city)
-                        <option class="mt-5 p-5" value="{{$city->id}}" @if($city->id ==
-                            $shop->city_id) selected @endif>
-                            {{$city->name}}
-                        </option>
+                        <option class="mt-2 p-5" value="{{$city->id}}">{{$city->name}}</option>
                         @endforeach
                         @else
                         <option>No Cities Found</option>
@@ -168,18 +165,8 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
-                    <select class="form-control select2" name="area_id">
+                    <select name="" id="areas" class="form-control" onchange="getArea()" required>
                         <option disabled selected hidden>Select Area</option>
-                        @if($areas->count())
-                        @foreach($areas as $area)
-                        <option class="mt-5 p-5" value="{{$area->id}}" @if($area->id ==
-                            $shop->area_id) selected @endif>
-                            {{$area->name}}
-                        </option>
-                        @endforeach
-                        @else
-                        <option>No Areas Found</option>
-                        @endif
                     </select>
                 </div>
             </div>
@@ -195,14 +182,32 @@
                     <input type="file" name="image" class="form-control-file" id="image">
                 </div>
             </div>
+            @include('admin.area_map')
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-info">Add</button>
+            <button type="submit" class="btn btn-info">Edit</button>
             <a href="{{ url('view-shops') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>
 </div>
 <!-- /.card -->
+<script>
+    function showArea(){
+        var cityId = jQuery('#citySelector').val();
+        $.ajax({
+            url: '/get-area',
+            type: 'get',
+            data: {id:cityId},
+            success: function(data){
+                var html = '';
+                jQuery.each(data, function(index, value){
+                    html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
+                });
+                $('#areas').append(html);
+            }
+        });
+    }
+</script>
 @endsection

@@ -120,21 +120,12 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-<<<<<<< HEAD
                     <select class="form-control" name="city_id" onchange="showArea()" id="citySelector">
-=======
-                    <select class="form-control select2" name="city_id">
->>>>>>> feff7fa2be77c6237d92e55f6e8d5696abb3d9fe
                         <option disabled selected hidden>Select City</option>
                         @if($cities->count())
                         @foreach($cities as $city)
-<<<<<<< HEAD
-                        @if($city->count())
                         <option class="mt-2 p-5" value="{{$city->id}}">{{$city->name}}</option>
-=======
-                        <option class="mt-5 p-5" value="{{$city->id}}">{{$city->name}}</option>
                         @endforeach
->>>>>>> feff7fa2be77c6237d92e55f6e8d5696abb3d9fe
                         @else
                         <option>No Cities Found</option>
                         @endif
@@ -150,15 +141,8 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
-                    <select class="form-control select2" name="area_id">
+                    <select name="" id="areas" class="form-control" onchange="getArea()" required>
                         <option disabled selected hidden>Select Area</option>
-                        @if($areas->count())
-                        @foreach($areas as $area)
-                        <option class="mt-5 p-5" value="{{$area->id}}">{{$area->name}}</option>
-                        @endforeach
-                        @else
-                        <option>No Areas Found</option>
-                        @endif
                     </select>
                 </div>
             </div>

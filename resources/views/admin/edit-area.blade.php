@@ -16,6 +16,22 @@
         enctype="multipart/form-data">
         @csrf
         <div class="card-body">
+
+            {{-- @if($errors->first('city_id'))
+            <div class="alert alert-danger">
+                {{$errors->first('city_id')}}
+            </div>
+            @endif --}}
+            <div class="form-group row">
+            <label for="area" class="col-sm-2 col-form-label" >Select City</label>
+                <div class="col-sm-6">
+                    <select name="" id="cities" class="form-control select2" onchange="getCity()" required>
+                        <option value="0">Select City</option>
+                            <option value='{{$city->id}},{{$city->latitude}},{{$city->longitude}}'>{{$city->name}}</option>
+                    </select>
+                </div>
+            </div>
+
             @if($errors->first('name'))
             <div class="alert alert-danger">
                 {{$errors->first('name')}}
@@ -58,7 +74,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Edit</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-areas') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>
