@@ -24,7 +24,6 @@ class Shop extends Model
         'coverage_km',
         'city_id',
         'area_id',
-        'status',
     ];
 
     public function cities() {
@@ -32,6 +31,6 @@ class Shop extends Model
     }
 
     public function areas() {
-        return $this->hasOne('App\Models\Unit', 'id', 'area_id');
+        return $this->hasOne('App\Models\Area', 'id', 'area_id');
     }
 }

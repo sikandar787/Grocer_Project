@@ -31,14 +31,11 @@ class ShopController extends Controller
                 'ur_description' => 'required',
                 'number' => 'required',
                 'password' => 'required',
-                'email',
                 'latitude' => 'required',
                 'longitude' => 'required',
-                'address',
                 'coverage_km' => 'required',
                 'city_id' => 'required',
                 'area_id' => 'required',
-                'status' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
             $getUploadedName = HelperController::uplaodsingleImage($req->file('image'),'images/shops/');
@@ -56,11 +53,10 @@ class ShopController extends Controller
             $shop->coverage_km = $req->coverage_km;
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
-            $shop->status = $req->status;
-            $shop->image = $req->image;
+            // $shop->image = $req->image;
             $shop->save();
         // $category->Create($req->except('_token'));
-        return redirect('view-categories');
+        return redirect('view-shops');
     }
 
     public function viewShops()
@@ -89,8 +85,11 @@ class ShopController extends Controller
         // if($roleId== 1)
         // {
 
+        $cities = City::get();
+        $areas = Area::get();
         $shop =  Shop::find($id);
-        return view('admin.edit-shop', compact('shop'));
+        // return $shop;
+        return view('admin.edit-shop', compact('shop', 'cities', 'areas'));
 
     // }else{
     //         // return back()->with('privilege', 'Your do not have any privilege to add product.');
@@ -110,8 +109,6 @@ class ShopController extends Controller
             $old_image = str_replace(URL("").'/',"",$shop->image);
             // return $old_image;
 
-            $shop->name = $req->name;
-
             if($req->image)
             {
                 $getUploadedName = HelperController::uplaodsingleImage($req->file('image'),'images/shops/');
@@ -122,7 +119,19 @@ class ShopController extends Controller
     }
             }
 
-
+            $shop->name = $req->name;
+            $shop->ur_name = $req->ur_name;
+            $shop->description = $req->description;
+            $shop->ur_description = $req->ur_description;
+            $shop->number = $req->number;
+            $shop->password = $req->password;
+            $shop->email = $req->email;
+            $shop->latitude = $req->latitude;
+            $shop->longitude = $req->longitude;
+            $shop->address = $req->address;
+            $shop->coverage_km = $req->coverage_km;
+            $shop->city_id = $req->city_id;
+            $shop->area_id = $req->area_id;
 
             $shop->save();
             DB::commit();

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
+use function GuzzleHttp\Promise\all;
+
 class AreaController extends Controller
 {
     public function addArea(Request $req)
@@ -47,8 +49,8 @@ class AreaController extends Controller
         // {
 
         $area =  Area::find($id);
-        $cities = City::where('status',1)->get();
-        return view('admin.edit-area', compact('area', 'cities'));
+        $city = City::where('status',1)->where('id',$area->city_id)->first();
+        return view('admin.edit-area', compact('area', 'city'));
 
     // }else{
     //         // return back()->with('privilege', 'Your do not have any privilege to add product.');
@@ -58,16 +60,26 @@ class AreaController extends Controller
 
     public function updateArea($id,Request $req)
     {
+
         $area = Area::find($id);
-        $this->validate($req,[
-            'name' => 'required',
-            'ur_name' => 'required',
-            'city_id' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'coverage_km' => 'required'
-        ]);
-        $area->Update($req->except('_token'));
+
+        // $this->validate($req,[
+        //     'name' => 'required',
+        //     'ur_name' => 'required',
+        //     'coverage_km' => 'required',
+        //     'city_id' => 'required'
+        // ]);
+        // return 10;
+        // return $req->city_id;
+        $area->name = $req->name;
+        $area->ur_name = $req->ur_name;
+        $area->coverage_km = $req->coverage_km;
+          if($req->latitude || $req->longitude)
+          {
+            $area->latitude = $req->latitude;
+            $area->longitude = $req->longitude;
+          }
+          $area->save();
         return redirect('view-areas');
     }
 

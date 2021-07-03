@@ -24,15 +24,15 @@
             </div>
             @endif
             <div class="form-group row">
-                <label for="name" class="col-sm-2 col-form-label">Cities Name</label>
+                <label for="name" class="col-sm-2 col-form-label">City Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="name" value={{ $city->name }} class="form-control" id="name">
+                    <input type="text" name="name" value="{{ $city->name }}" class="form-control" id="name">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="name" class="col-sm-2 col-form-label">Cities Urdu Name</label>
+                <label for="name" class="col-sm-2 col-form-label">City Urdu Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_name" value={{ $city->ur_name }} class="form-control urduFont" id="name">
+                    <input type="text" name="ur_name" value="{{ $city->ur_name }}" class="form-control urduFont" id="name">
                 </div>
             </div>
             <div class="form-group row">

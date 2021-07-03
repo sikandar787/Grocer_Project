@@ -114,6 +114,7 @@ class ProductController extends Controller
             'unit_id' => 'required',
             'is_featured' => 'required',
         ]);
+        // return $req->all();
 
         DB::beginTransaction();
         try{
@@ -122,7 +123,7 @@ class ProductController extends Controller
             $old_image = str_replace(URL("").'/',"",$product->image);
             // return $old_image;
 
-            $product->name = $req->name;
+
 
             if($req->image)
             {
@@ -134,7 +135,22 @@ class ProductController extends Controller
     }
             }
 
-
+            $product->name = $req->name;
+            $product->ur_name = $req->ur_name;
+            $product->description = $req->description;
+            $product->ur_description = $req->ur_description;
+            $product->category_id = $req->category_id;
+            $product->price = $req->price;
+            $product->discount_price = $req->discount_price;
+            $product->max_limit = $req->max_limit;
+            $product->weight = $req->weight;
+            $product->unit_id = $req->unit_id;
+            // $product->status = $req->status;
+            $product->total_sold = $req->total_sold;
+            $product->is_featured = $req->is_featured;
+            // $product->shop_id = $req->shop_id;
+            // $product->image = $req->image;
+            // return $product;
 
             $product->save();
             DB::commit();

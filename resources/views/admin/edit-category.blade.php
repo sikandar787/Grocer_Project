@@ -50,8 +50,7 @@
             <div class="form-group row">
                 <label for="category" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <input type="text" name="description" value="{{$category->description}}" class="form-control"
-                        id="category" placeholder="Description">
+                    <textarea name="description" class="form-control" id="description" cols="10" rows="3">{{ $category->description }}</textarea>
                 </div>
             </div>
 
@@ -63,8 +62,7 @@
             <div class="form-group row">
                 <label for="category" class="col-sm-2 col-form-label">Urdu Description</label>
                 <div class="col-sm-10">
-                    <input type="text" name="ur_description" value="{{$category->ur_description}}" class="form-control"
-                        id="category" placeholder="تفصیل درج کریں">
+                    <textarea name="description" class="form-control urduFont" id="description" cols="10" rows="3">{{ $category->ur_description }}</textarea>
                 </div>
             </div>
 
@@ -83,7 +81,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Edit</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-categories') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>

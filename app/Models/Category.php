@@ -15,7 +15,5 @@ class Category extends Model
         'description',
         'ur_description',
         'image',
-        'parent_id',
-        'status'
     ];
 }

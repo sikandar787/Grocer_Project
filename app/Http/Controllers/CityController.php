@@ -50,12 +50,12 @@ class CityController extends Controller
     {
          $unit = City::find($id);
 
-         $this->validate($req,[
-            'name' => 'required|unique:cities',
-            'ur_name'=> 'required|unique:cities',
-            'latitude'=> 'required|unique:cities',
-            'longitude'=> 'required|unique:cities'
-        ]);
+        //  $this->validate($req,[
+        //     'name' => 'required|unique:cities',
+        //     'ur_name'=> 'required|unique:cities',
+        //     'latitude'=> 'required|unique:cities',
+        //     'longitude'=> 'required|unique:cities'
+        // ]);
 
         $unit->Update($req->except('_token'));
         return redirect('view-cities');

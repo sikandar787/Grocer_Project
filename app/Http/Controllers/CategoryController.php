@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
     public function viewCategories()
     {
-        $categories = Category::where('parent_id',0)->orderBy('id','DESC')->get();
+        $categories = Category::orderBy('id','DESC')->get();
         return view('admin.view-categories',compact('categories'));
     }
 
@@ -69,12 +69,12 @@ class CategoryController extends Controller
     public function updateCategory($id,Request $req)
     {
 
-        $req->validate([
-                'name' => 'required',
-                'ur_name' => 'required',
-                'description' => 'required',
-                'ur_description' => 'required',
-        ]);
+        // $req->validate([
+        //         'name' => 'required',
+        //         'ur_name' => 'required',
+        //         'description' => 'required',
+        //         'ur_description' => 'required',
+        // ]);
 
         DB::beginTransaction();
         try{
@@ -82,8 +82,6 @@ class CategoryController extends Controller
 
             $old_image = str_replace(URL("").'/',"",$category->image);
             // return $old_image;
-
-            $category->name = $req->name;
 
             if($req->image)
             {
@@ -95,7 +93,10 @@ class CategoryController extends Controller
     }
             }
 
-
+            $category->name = $req->name;
+            $category->ur_name = $req->ur_name;
+            $category->description = $req->description;
+            $category->ur_description = $req->ur_description;
 
             $category->save();
             DB::commit();

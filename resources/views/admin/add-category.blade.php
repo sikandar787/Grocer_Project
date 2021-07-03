@@ -46,7 +46,7 @@
             <div class="form-group row">
                 <label for="category" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="description" class="form-control" id="category" placeholder="Description">
+                    <textarea name="description" class="form-control" id="description" cols="10" rows="3"></textarea>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="form-group row">
                 <label for="category" class="col-sm-2 col-form-label">Urdu Description</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_description" class="form-control urduFont" id="category" placeholder="تفصیل درج کریں">
+                    <textarea name="description" class="form-control urduFont" id="description" cols="10" rows="3"></textarea>
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Add</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <a href="{{ url('view-categories') }}" class="btn btn-danger">Cancel</a>
         </div>
         <!-- /.card-footer -->
     </form>
