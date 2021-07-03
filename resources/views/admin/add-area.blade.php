@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="area" class="col-sm-2 col-form-label" >Select City</label>
+            <label for="area" class="col-sm-2 col-form-label" >Select City</label>
                 <div class="col-sm-6">
                     <select name="" id="cities" class="form-control select2" onchange="getCity()" required>
                         <option value="0">Select City</option>

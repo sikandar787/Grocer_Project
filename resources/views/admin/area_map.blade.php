@@ -1,14 +1,14 @@
     <div class="form-group row">
-        <input type="hidden" name="latitude" class="form-control" id="lats" placeholder="Latitude">
-        <input type="hidden" name="longitude" class="form-control" id="longs" placeholder="Longitude">
-        <input type="hidden" name="city_id" class="form-control" id="city" placeholder="Longitude">
+        <input type="text" name="latitude" class="form-control" id="lats" placeholder="Latitude">
+        <input type="text" name="longitude" class="form-control" id="longs" placeholder="Longitude">
+        <input type="text" name="area_id" class="form-control" id="city" placeholder="Area Id">
     </div>
     <!--map -->
     <div id="map" style="height: 100%; padding-top: 500px;"></div>
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 <script type="text/javascript">
-    function getCity(){
-    var cityId = jQuery('#cities').val();
+    function getArea(){
+    var cityId = jQuery('#areas').val();
     var arr = cityId.split(',');
     var city = arr[0];
     document.getElementById('city').value = city;
@@ -19,7 +19,7 @@
     function showCity(latitude, longitude) {
     const myLatlng = { lat:parseFloat(latitude) , lng: parseFloat(longitude) };
     const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 10,
+        zoom: 12,
         center: myLatlng,
     });
     // Create the initial InfoWindow.
@@ -57,10 +57,12 @@
         center: myLatlng,
     });
     // Create the initial InfoWindow.
+    
     let infoWindow = new google.maps.InfoWindow({
         content: "Click the map to get Lat/Lng!",
         position: myLatlng,
     });
+
     infoWindow.open(map);
     // Configure the click listener.
     map.addListener("click", (mapsMouseEvent) => {

@@ -87,5 +87,22 @@ class AreaController extends Controller
         $cities = City::where('status',1)->get();
         return view('admin.add-area')->with(compact('cities'));
     }
+    public function statusUpdateAreas( $id)
+    {
+       $area = DB::table('areas')->select('status')->where('id', $id)->first();
+
+
+       if($area->status == '1'){
+           $status= '0';
+
+       }else{
+           $status= '1';
+       }
+
+       $values= array('status'=> $status);
+       DB::table('areas')->where('id', $id)->update($values);
+       session()->flash('msg', 'Area Status Updated Successfully');
+       return redirect('view-areas');
+    }
 
 }

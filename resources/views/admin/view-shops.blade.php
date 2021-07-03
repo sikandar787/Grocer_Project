@@ -32,7 +32,7 @@
                     <th>Unit</th> --}}
                     {{-- <th>Featured</th> --}}
 
-                    {{-- <th>Status</th> --}}
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -57,22 +57,19 @@
                     <td class=" align-middle">{{$shop->max_limit}}</td>
                     <td class=" align-middle">{{$shop->weight}}</td> --}}
                     {{-- <td class=" align-middle">{{$shop->is_featured}}</td> --}}
-                    <!-- <td>{{$shop->status}}</td> -->
-                    {{-- <td class="text-center align-middle">
-                        @if($category->status == 1)
-                        <button
-                            class="pushy__btn pushy__btn--sm pushy__btn--red change_status_btn enable_disable_category"
-                            id="{{$category->id}}">Disable</button>
+                    <td class="text-center align-middle">
+                        @if($shop->status == 1)
+                        <a href="shop/update-status/{{ $shop->id }}" class="btn btn-success">
+                            Active
+                        </a>
+
                         @else
-                        <button
-                            class="pushy__btn pushy__btn--sm pushy__btn--green change_status_btn enable_disable_category"
-                            id="{{$category->id}}">Enable</button>
-                        <!-- <label class="switch">
-                            <input type="checkbox" class="enable_disable_product" id="{{$category->id}}" checked>
-                            <span class="slider round"></span>
-                        </label> -->
+                        <a href="shop/update-status/{{ $shop->id }}" class="btn btn-danger">
+                            Inactive
+                        </a>
+
                         @endif
-                    </td> --}}
+                    </td>
                     <td class=" text-center align-middle">
                         <a href="edit-shop/{{$shop->id}}">
                             <i class="fas fa-edit text-primary"></i>

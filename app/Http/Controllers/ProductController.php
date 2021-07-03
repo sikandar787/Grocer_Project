@@ -164,4 +164,22 @@ class ProductController extends Controller
         return redirect('view-products');
     }
 
+    public function statusUpdateProducts( $id)
+    {
+       $product = DB::table('products')->select('status')->where('id', $id)->first();
+
+
+       if($product->status == '1'){
+           $status= '0';
+
+       }else{
+           $status= '1';
+       }
+
+       $values= array('status'=> $status);
+       DB::table('products')->where('id', $id)->update($values);
+       session()->flash('success', 'Product Status Updated Successfully');
+       return redirect('view-products');
+    }
+
 }

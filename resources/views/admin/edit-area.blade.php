@@ -22,11 +22,13 @@
                 {{$errors->first('city_id')}}
             </div>
             @endif --}}
-            <div class="form-group row mt-5">
-                <label for="city_id" class="col-sm-2 col-form-label">City</label>
+            <div class="form-group row">
+            <label for="area" class="col-sm-2 col-form-label" >Select City</label>
                 <div class="col-sm-6">
-                    {{-- <input type="hidden" name="city_id" class="form-control"> --}}
-                    <input type="text" value="{{$city->name}}" class="form-control" readonly>
+                    <select name="" id="cities" class="form-control select2" onchange="getCity()" required>
+                        <option value="0">Select City</option>
+                            <option value='{{$city->id}},{{$city->latitude}},{{$city->longitude}}'>{{$city->name}}</option>
+                    </select>
                 </div>
             </div>
 
