@@ -145,6 +145,12 @@ class ShopController extends Controller
         return redirect('view-shops');
     }
 
+    public function getArea(Request $request){
+        $cityID = $request->id;
+        $areas = Area::where('city_id', '=', $cityID)->get();
+        return $areas;
+    }
+
     public function statusUpdateShops( $id)
     {
        $shop = DB::table('shops')->select('status')->where('id', $id)->first();

@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('admin.login');
 });
 // Route::get('/login',[AdminController::class,'index']);
@@ -56,6 +57,11 @@ Route::get('/add-product', function () {
 Route::get('/add-shop', function () {
     return view('admin.add-shop');
 });
+
+Route::get('/add-banner', function () {
+    return view('admin.add-banner');
+});
+
 Route::get('/add-user', function () {
     return view('admin.add-user');
 });
@@ -69,9 +75,12 @@ Route::get('/edit-product', [ProductController::class, 'getCategories']);
 Route::get('/add-shop', [ShopController::class, 'getCities']);
 
 Route::get('/edit-shop', [ShopController::class, 'getCities']);
+
+Route::get('/add-banner', [BannerController::class, 'getCategories']);
+
+Route::get('/edit-banner', [BannerController::class, 'getCategories']);
+
 // Profile Section routes
-
-
 
 Route::get('/edit-profile',[AdminController::class,'editProfile']);
 Route::post('/update-profile',[AdminController::class,'updateProfile'])->name('update-profile');
@@ -129,6 +138,15 @@ Route::get('/view-shops',[ShopController::class,'viewShops']);
 Route::get('/delete-shop/{id}',[ShopController::class,'deleteShop']);
 Route::get('/edit-shop/{id}',[ShopController::class,'editShop']);
 Route::post('/update-shop/{id}',[ShopController::class,'updateShop'])->name('update-shop');
+Route::get('/get-area',[ShopController::class,'getArea']);
 Route::get('shop/update-status/{id}',[ShopController::class,'statusUpdateShops']);
+
+// Banner routes
+Route::post('/add-banner', [BannerController::class, 'addBanner'])->name('add-banner');
+Route::get('/view-banners',[BannerController::class,'viewBanners']);
+Route::get('/delete-banner/{id}',[BannerController::class,'deleteBanner']);
+Route::get('/edit-banner/{id}',[BannerController::class,'editBanner']);
+Route::post('/update-banner/{id}',[BannerController::class,'updateBanner'])->name('update-banner');
+Route::get('banner/update-status/{id}',[BannerController::class,'statusUpdateBanners']);
 
 });

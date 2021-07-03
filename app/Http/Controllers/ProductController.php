@@ -102,18 +102,18 @@ class ProductController extends Controller
     public function updateProduct($id,Request $req)
     {
 
-        $req->validate([
-            'name' => 'required',
-            'ur_name' => 'required',
-            'description' => 'required',
-            'ur_description' => 'required',
-            'category_id' => 'required',
-            'price' => 'required',
-            'max_limit' => 'required',
-            'weight' => 'required',
-            'unit_id' => 'required',
-            'is_featured' => 'required',
-        ]);
+        // $req->validate([
+        //     'name' => 'required',
+        //     'ur_name' => 'required',
+        //     'description' => 'required',
+        //     'ur_description' => 'required',
+        //     'category_id' => 'required',
+        //     'price' => 'required',
+        //     'max_limit' => 'required',
+        //     'weight' => 'required',
+        //     'unit_id' => 'required',
+        //     'is_featured' => 'required',
+        // ]);
         // return $req->all();
 
         DB::beginTransaction();

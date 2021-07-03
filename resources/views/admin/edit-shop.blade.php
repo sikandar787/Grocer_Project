@@ -93,30 +93,6 @@
                 </div>
             </div>
 
-            @if($errors->first('latitude'))
-            <div class="alert alert-danger">
-                {{$errors->first('latitude')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Latitude</label>
-                <div class="col-sm-6">
-                    <input type="text" name="latitude" value="{{ $shop->latitude }}" class="form-control" id="shop" placeholder="Latitude">
-                </div>
-            </div>
-
-            @if($errors->first('longitude'))
-            <div class="alert alert-danger">
-                {{$errors->first('longitude')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Longitude</label>
-                <div class="col-sm-6">
-                    <input type="text" name="longitude" value="{{ $shop->longitude }}" class="form-control" id="shop" placeholder="Longitude">
-                </div>
-            </div>
-
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-6">
@@ -148,7 +124,10 @@
                         <option disabled selected hidden>Select City</option>
                         @if($cities->count())
                         @foreach($cities as $city)
-                        <option class="mt-2 p-5" value="{{$city->id}}">{{$city->name}}</option>
+                        <option class="mt-5 p-5" value="{{$city->id}}" @if($city->id ==
+                            $shop->city_id) selected @endif>
+                            {{$city->name}}
+                        </option>
                         @endforeach
                         @else
                         <option>No Cities Found</option>
@@ -167,6 +146,9 @@
                 <div class="col-sm-6">
                     <select name="" id="areas" class="form-control" onchange="getArea()" required>
                         <option disabled selected hidden>Select Area</option>
+                        <option class="mt-5 p-5" value="{{$shop->area_id}}" selected>
+                            {{$shop->areas->name}}
+                        </option>
                     </select>
                 </div>
             </div>

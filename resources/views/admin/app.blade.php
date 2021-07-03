@@ -519,6 +519,32 @@
                                 </li>
                             </ul>
                             <!-- Shops Nav End -->
+                            <!-- Banners Nav -->
+                        <li class="nav-item">
+                            <a href="#"
+                                class="nav-link {{ ( request()->is('add-banner') || request()->is('view-banners') )  ? 'active' : ''  }}">
+                                <i class="nav-icon fas fa-store"></i>
+                                <p>
+                                    Banners
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('add-banner') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Banner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('view-banners') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Banners</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Banners Nav End -->
                         <li class="nav-item">
                             <a href="{{ route('signout') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
