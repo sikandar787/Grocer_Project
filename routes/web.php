@@ -100,3 +100,4 @@ Route::get('/view-shops',[ShopController::class,'viewShops']);
 Route::get('/delete-shop/{id}',[ShopController::class,'deleteShop']);
 Route::get('/edit-shop/{id}',[ShopController::class,'editShop']);
 Route::post('/update-shop/{id}',[ShopController::class,'updateShop'])->name('update-shop');
+Route::get('/get-area',[ShopController::class,'getArea']);

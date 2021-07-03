@@ -93,30 +93,6 @@
                 </div>
             </div>
 
-            @if($errors->first('latitude'))
-            <div class="alert alert-danger">
-                {{$errors->first('latitude')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Latitude</label>
-                <div class="col-sm-6">
-                    <input type="text" name="latitude" class="form-control" id="shop" placeholder="Latitude">
-                </div>
-            </div>
-
-            @if($errors->first('longitude'))
-            <div class="alert alert-danger">
-                {{$errors->first('longitude')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Longitude</label>
-                <div class="col-sm-6">
-                    <input type="text" name="longitude" class="form-control" id="shop" placeholder="Longitude">
-                </div>
-            </div>
-
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-6">
@@ -144,11 +120,11 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="city_id">
+                    <select class="form-control" name="city_id" onchange="showArea()" id="citySelector">
                         <option disabled selected hidden>Select City</option>
                         @foreach($cities as $city)
                         @if($city->count())
-                        <option class="mt-5 p-5" value="{{$city->id}}">{{$city->name}}</option>
+                        <option class="mt-2 p-5" value="{{$city->id}}">{{$city->name}}</option>
                         @else
                         <option>No Cities Found</option>
                         @endif
@@ -165,15 +141,8 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="area_id">
+                    <select name="" id="areas" class="form-control" onchange="getArea()" required>
                         <option disabled selected hidden>Select Area</option>
-                        @foreach($areas as $area)
-                        @if($area->count())
-                        <option class="mt-5 p-5" value="{{$area->id}}">{{$area->name}}</option>
-                        @else
-                        <option>No Areas Found</option>
-                        @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -183,12 +152,14 @@
                 {{$errors->first('image')}}
             </div>
             @endif
-            <div class="form-group row mt-5">
+            <div class="form-group row mt-2">
                 <label for="image" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-6">
                     <input type="file" name="image" class="form-control-file" id="image">
                 </div>
             </div>
+
+            @include('admin.area_map')
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -199,4 +170,21 @@
     </form>
 </div>
 <!-- /.card -->
+<script>
+    function showArea(){
+        var cityId = jQuery('#citySelector').val();
+        $.ajax({
+            url: '/get-area',
+            type: 'get',
+            data: {id:cityId},
+            success: function(data){
+                var html = '';
+                jQuery.each(data, function(index, value){
+                    html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
+                });
+                $('#areas').append(html);
+            }
+        });
+    }
+</script>
 @endsection
