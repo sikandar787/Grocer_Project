@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
 {
@@ -59,5 +60,22 @@ class CityController extends Controller
         $unit->Update($req->except('_token'));
         return redirect('view-cities');
 
+     }
+     public function statusUpdateCity( $id)
+     {
+        $city = DB::table('cities')->select('status')->where('id', $id)->first();
+
+
+        if($city->status == '1'){
+            $status= '0';
+
+        }else{
+            $status= '1';
+        }
+
+        $values= array('status'=> $status);
+        DB::table('cities')->where('id', $id)->update($values);
+        session()->flash('msg', 'City Status Updated Successfully');
+        return redirect('view-cities');
      }
 }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
+
 class ShopController extends Controller
 {
 
@@ -100,23 +101,7 @@ class ShopController extends Controller
     public function updateShop($id,Request $req)
     {
 
-        $req->validate([
-            'name' => 'required',
-            'ur_name' => 'required',
-            'description' => 'required',
-            'ur_description' => 'required',
-            'number' => 'required',
-            'password' => 'required',
-            'email',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'address',
-            'coverage_km' => 'required',
-            'city_id' => 'required',
-            'area_id' => 'required',
-            'status' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+
 
         DB::beginTransaction();
         try{
@@ -150,5 +135,24 @@ class ShopController extends Controller
 
         return redirect('view-shops');
     }
+
+    public function statusUpdateShops( $id)
+    {
+       $shop = DB::table('shops')->select('status')->where('id', $id)->first();
+
+
+       if($shop->status == '1'){
+           $status= '0';
+
+       }else{
+           $status= '1';
+       }
+
+       $values= array('status'=> $status);
+       DB::table('shops')->where('id', $id)->update($values);
+       session()->flash('success', 'Shop Status Updated Successfully');
+       return redirect('view-shops');
+    }
+
 
 }

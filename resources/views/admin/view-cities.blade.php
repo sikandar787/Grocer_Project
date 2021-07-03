@@ -17,6 +17,7 @@
     <!-- /.card-header -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
+            <div class="msg" style="text-align: left; background-color:rgb(129, 197, 129);">{{ session('msg') }}</div>
             <thead>
                 <tr>
                     <th>Sr. #</th>
@@ -24,7 +25,7 @@
                     <th>City Urdu Name</th>
                     <th>City Latitude</th>
                     <th>City Longitude</th>
-                    {{-- <th>Status</th> --}}
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -36,6 +37,19 @@
                     <td class=" align-middle">{{$city->ur_name}}</td>
                     <td class=" align-middle">{{$city->latitude}}</td>
                     <td class=" align-middle">{{$city->longitude}}</td>
+                    <td class="text-center align-middle">
+                        @if($city->status == 1)
+                        <a href="city/update-status/{{ $city->id }}" class="btn btn-success">
+                            Active
+                        </a>
+
+                        @else
+                        <a href="city/update-status/{{ $city->id }}" class="btn btn-danger">
+                            Inactive
+                        </a>
+
+                        @endif
+                    </td>
                     <td class=" text-center align-middle">
                         <a href="edit-city/{{$city->id}}">
                             <i class="fas fa-edit text-primary"></i>

@@ -16,6 +16,7 @@
     <!-- /.card-header -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
+            <div class="msg" style="text-align: left; background-color:rgb(129, 197, 129);">{{ session('msg') }}</div>
             <thead>
                 <tr>
                     <th>Sr. #</th>
@@ -25,8 +26,7 @@
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Coverage Area (Km)</th>
-
-                    {{-- <th>Status</th> --}}
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -44,22 +44,19 @@
                     <td class=" align-middle">{{$area->latitude}}</td>
                     <td class=" align-middle">{{$area->longitude}}</td>
                     <td class=" align-middle">{{$area->coverage_km}}</td>
-                    <!-- <td>{{$area->status}}</td> -->
-                    {{-- <td class="text-center align-middle">
-                        @if($category->status == 1)
-                        <button
-                            class="pushy__btn pushy__btn--sm pushy__btn--red change_status_btn enable_disable_category"
-                            id="{{$category->id}}">Disable</button>
+                    <td class="text-center align-middle">
+                        @if($area->status == 1)
+                        <a href="area/update-status/{{ $area->id }}" class="btn btn-success">
+                            Active
+                        </a>
+
                         @else
-                        <button
-                            class="pushy__btn pushy__btn--sm pushy__btn--green change_status_btn enable_disable_category"
-                            id="{{$category->id}}">Enable</button>
-                        <!-- <label class="switch">
-                            <input type="checkbox" class="enable_disable_product" id="{{$category->id}}" checked>
-                            <span class="slider round"></span>
-                        </label> -->
+                        <a href="area/update-status/{{ $area->id }}" class="btn btn-danger">
+                            Inactive
+                        </a>
+
                         @endif
-                    </td> --}}
+                    </td>
                     <td class=" text-center align-middle">
                         <a href="edit-area/{{$area->id}}">
                             <i class="fas fa-edit text-primary"></i>
