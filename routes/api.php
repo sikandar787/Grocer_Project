@@ -25,3 +25,4 @@ Route::get('/shops', [ApiController::class,'getShopsApi']);
 Route::get('/cities', [ApiController::class,'getCitiesApi']);
 Route::get('/units', [ApiController::class,'getUnitsApi']);
 Route::get('/categories', [ApiController::class,'getCategoriesApi']);
+Route::post('/login', [ApiController::class,'getLoginApi']);
