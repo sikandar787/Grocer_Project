@@ -20,6 +20,7 @@
 
             <thead>
                 <tr>
+                    <th>Option</th>
                     <th>Sr. #</th>
                     <th>Image</th>
                     <th>Name</th>
@@ -28,10 +29,10 @@
                     <th>Urdu Description</th> --}}
                     <th>Category</th>
                     <th>Price</th>
-                    <th>Discount Price</th>
-                    <th>Maximum Purchase Limit</th>
-                    <th>Weight</th>
-                    <th>Unit</th>
+                    <!-- <th>Discount Price</th> -->
+                    <!-- <th>Maximum Purchase Limit</th> -->
+                    <!-- <th>Weight</th> -->
+                    <!-- <th>Unit</th> -->
                     {{-- <th>Featured</th> --}}
 
                     <th>Status</th>
@@ -44,6 +45,12 @@
                 @endphp
                 @foreach($products as $key => $product)
                 <tr>
+                    <td class="text-right align-middle">
+                        <div class="form-check ml-4">
+                            <input class="form-check-input" type="checkbox" value="" id="{{$product->id}}">
+                        </div>
+                        
+                    </td>
                     <th class="text-right align-middle">{{$key+1}}</th>
                     <td class="text-center align-middle"><img src="{{$product->image}}" class="rounded" height="70"
                             width="70" alt="">
@@ -54,10 +61,10 @@
                     <td class=" align-middle">{{$product->ur_description}}</td> --}}
                     <td class=" align-middle">{{$product->categories->name}}</td>
                     <td class=" align-middle">{{$product->price}}</td>
-                    <td class=" align-middle">{{$product->discount_price}}</td>
-                    <td class=" align-middle">{{$product->max_limit}}</td>
-                    <td class=" align-middle">{{$product->weight}}</td>
-                    <td class=" align-middle">{{$product->units->name}}</td>
+                    <!-- <td class=" align-middle">{{$product->discount_price}}</td> -->
+                    <!-- <td class=" align-middle">{{$product->max_limit}}</td> -->
+                    <!-- <td class=" align-middle">{{$product->weight}}</td> -->
+                    <!-- <td class=" align-middle">{{$product->units->name}}</td> -->
                     {{-- <td class=" align-middle">{{$product->is_featured}}</td> --}}
                     <td class="text-center align-middle">
                         @if($product->status == 1)
@@ -73,10 +80,13 @@
                         @endif
                     </td>
                     <td class=" text-center align-middle">
-                        <a href="edit-product/{{$product->id}}">
+                        <a href="edit-product/{{$product->id}}" title="Edit">
                             <i class="fas fa-edit text-primary"></i>
                         </a>
-                        <a href="delete-product/{{$product->id}}">
+                        <a href="product-details/{{$product->id}}" title="Details">
+                            <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        </a>
+                        <a href="delete-product/{{$product->id}}" title="Delete">
                             <i class="fas fa-trash text-danger"></i>
                         </a>
                     </td>
