@@ -35,7 +35,7 @@ class ShopController extends Controller
                 'longitude' => 'required',
                 'coverage_km' => 'required',
                 'city_id' => 'required',
-                'area_id' => 'required',
+                // 'area_id' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
             $getUploadedName = HelperController::uplaodsingleImage($req->file('image'),'images/shops/');
@@ -53,6 +53,7 @@ class ShopController extends Controller
             $shop->coverage_km = $req->coverage_km;
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
+            $shop->location_status = $req->location_status;
             // $shop->image = $req->image;
             $shop->save();
         // $category->Create($req->except('_token'));
@@ -132,7 +133,9 @@ class ShopController extends Controller
             $shop->coverage_km = $req->coverage_km;
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
+            $shop->location_status = $req->location_status;
 
+return $shop;
             $shop->save();
             DB::commit();
 

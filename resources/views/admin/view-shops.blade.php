@@ -52,7 +52,7 @@
                     <td class=" align-middle">{{$shop->ur_description}}</td> --}}
                     <td class=" align-middle">{{$shop->number}}</td>
                     <td class=" align-middle">{{$shop->cities->name}}</td>
-                    <td class=" align-middle">{{$shop->areas->name}}</td>
+                    {{-- <td class=" align-middle">{{$shop->areas->name}}</td> --}}
                     {{-- <td class=" align-middle">{{$shop->discount_price}}</td>
                     <td class=" align-middle">{{$shop->max_limit}}</td>
                     <td class=" align-middle">{{$shop->weight}}</td> --}}

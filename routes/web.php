@@ -80,6 +80,10 @@ Route::get('/add-banner', [BannerController::class, 'getCategories']);
 
 Route::get('/edit-banner', [BannerController::class, 'getCategories']);
 
+
+//Route for view Record On Dashboard
+Route::get('/dashboard', [AdminController::class, 'viewRecords']);
+
 // Profile Section routes
 
 Route::get('/edit-profile',[AdminController::class,'editProfile']);

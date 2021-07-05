@@ -470,7 +470,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-product') || request()->is('view-products') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-folder"></i>
+                                <i class="nav-icon fas fa-shopping-bag"></i>
                                 <p>
                                     Products
                                     <i class="fas fa-angle-left right"></i>
@@ -523,7 +523,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-banner') || request()->is('view-banners') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-store"></i>
+                                <i class="nav-icon fas fa-laptop"></i>
                                 <p>
                                     Banners
                                     <i class="fas fa-angle-left right"></i>

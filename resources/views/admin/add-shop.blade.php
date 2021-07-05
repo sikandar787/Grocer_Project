@@ -80,18 +80,20 @@
             </div>
             @endif
             <div class="form-group row">
+                <label for="shop" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="text" name="email" class="form-control" id="shop" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-6">
                     <input type="text" name="password" class="form-control" id="shop" placeholder="Password">
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-6">
-                    <input type="text" name="email" class="form-control" id="shop" placeholder="Email">
-                </div>
-            </div>
+
 
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Address</label>
@@ -111,6 +113,18 @@
                     <input type="text" name="coverage_km" class="form-control" id="shop" placeholder="Coverage Area (Km)">
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="shop" class="col-sm-2 col-form-label">Location Status</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="location_status" onchange="showArea()" id="locationStatus">
+                        <option disabled selected hidden>Select Location Status</option>
+                        <option class="mt-2 p-5" value="0" >Area Specific</option>
+                        <option class="mt-2 p-5" value="1">Over All</option>
+                    </select>
+                </div>
+            </div>
+
 
             @if($errors->first('city_id'))
             <div class="alert alert-danger">

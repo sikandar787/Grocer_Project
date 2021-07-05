@@ -112,6 +112,18 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <label for="shop" class="col-sm-2 col-form-label">Location Status</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="location_status" onchange="showArea()" id="locationStatus">
+                        <option disabled selected hidden>Select Location Status</option>
+                        <option class="mt-2 p-5" value="0" @if($shop->location_status ==
+                            $shop->location_status) selected @endif> Area Specific</option>
+                        <option class="mt-2 p-5" value="1" selected>Over All</option>
+                    </select>
+                </div>
+            </div>
+
             @if($errors->first('city_id'))
             <div class="alert alert-danger">
                 {{$errors->first('city_id')}}
@@ -141,7 +153,7 @@
                 {{$errors->first('area_id')}}
             </div>
             @endif
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
                     <select name="" id="areas" class="form-control" onchange="getArea()" required>
@@ -151,7 +163,7 @@
                         </option>
                     </select>
                 </div>
-            </div>
+            </div> --}}
 
             @if($errors->first('image'))
             <div class="alert alert-danger">
