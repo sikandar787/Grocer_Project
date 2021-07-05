@@ -55,7 +55,7 @@ class ApiController extends Controller
     {
         $users = new User();
         $user = User::where('email',$request->email)->get();
-
+   return 1;
         if(!$user->isEmpty())
         {
             if(Hash::check($request->password, $user[0]->password))

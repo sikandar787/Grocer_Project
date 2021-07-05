@@ -192,11 +192,11 @@
             type: 'get',
             data: {id:cityId},
             success: function(data){
-                var html = '';
+                var html = '<option>Select Area</option>';
                 jQuery.each(data, function(index, value){
                     html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
                 });
-                $('#areas').append(html);
+                $('#areas').empty().append(html);
             }
         });
     }
