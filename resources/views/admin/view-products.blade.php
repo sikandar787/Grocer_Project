@@ -5,7 +5,7 @@
 
 
 
-<div class="card">
+<div class="card oldCard">
     <div class="card-header">
         <h3 class="card-title"></h3>
         <a href="{{url('add-product')}}" class=" btn btn-primary card-title float-right">Add Product</a>
@@ -15,6 +15,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+        <button id="update_checked" class="btn btn-secondary" onclick="getid()">Edit Multiple Records</button>
         <table id="example1" class="table table-bordered table-striped">
             <div class="msg" style="text-align: left; background-color:rgb(129, 197, 129);">{{ session('success') }}</div>
 
@@ -47,9 +48,8 @@
                 <tr>
                     <td class="text-right align-middle">
                         <div class="form-check ml-4">
-                            <input class="form-check-input" type="checkbox" value="" id="{{$product->id}}">
+                            <input class="form-check-input checkbox-sm" type="checkbox" id="cheek" value="{{$product->id}}" style="width:16px; height: 16px;">
                         </div>
-                        
                     </td>
                     <th class="text-right align-middle">{{$key+1}}</th>
                     <td class="text-center align-middle"><img src="{{$product->image}}" class="rounded" height="70"
@@ -96,6 +96,8 @@
     </div>
     <!-- /.card-body -->
 </div>
+<div class="card newCard">
+</div>
 <!-- /.card -->
 
 @endsection
@@ -106,4 +108,22 @@
 toastr.success("{!! Session::get('product_deleted') !!}");
 </script>
 @endif
+<script type="text/javascript">
+    function getid(){
+        var arr = [];
+        $("#cheek:checked").each(function(){
+            arr.push($(this).val());
+        });
+        console.log(arr);
+        $.ajax({
+            url: '/update-checked',
+            type: 'get',
+            data: {'id': arr},
+            success: (function (response) {
+                $('.oldCard').hide();
+                $('.newCard').html(response);
+            })
+        });
+    }
+</script>
 @endsection
