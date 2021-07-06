@@ -26,7 +26,7 @@
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Unit Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="name" value={{ $unit->name }} class="form-control" id="name">
+                    <input type="text" name="name" value="{{ $unit->name }}" class="form-control" id="name">
                 </div>
             </div>
         </div>
