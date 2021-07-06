@@ -52,42 +52,42 @@ class ApiController extends Controller
         return $categories;
     }
 
-    public function getAdminLoginApi(Request $request)
-    {
-        $admins = new Admin();
-        $admin = Admin::where('email',$request->email)->get();
+//     public function getAdminLoginApi(Request $request)
+//     {
+//         $admins = new User();
+//         $admin = User::where('email',$request->email)->get();
+//    return 1;
+//         if(!$user->isEmpty())
+//         {
+//             if(Hash::check($request->password, $admin[0]->password))
+//             {
+//                 // $token = $admin[0]->createToken('MyProject')->accessToken;
+//                 $data = $admin;
+//                 // $data[0]['token'] = $token;
 
-        if(!$admin->isEmpty())
-        {
-            if(Hash::check($request->password, $admin[0]->password))
-            {
-                // $token = $admin[0]->createToken('MyProject')->accessToken;
-                $data = $admin;
-                // $data[0]['token'] = $token;
+//                 return response()->json([
+//                     'status' => 1,
+//                     'message' => 'Successfully logged in',
+//                     'data' => $data
+//                 ]);
+//             }
+//             else{
+//                 return response()->json([
+//                     'status' => 0,
+//                     'message' => 'Wrong password, try again',
+//                     'data' => []
+//                 ]);
+//             }
 
-                return response()->json([
-                    'status' => 1,
-                    'message' => 'Successfully logged in',
-                    'data' => $data
-                ]);
-            }
-            else{
-                return response()->json([
-                    'status' => 0,
-                    'message' => 'Wrong password, try again',
-                    'data' => []
-                ]);
-            }
-
-        }
-        else{
-            return response()->json([
-                'status' => 0,
-                'message' => 'Wrong email, try again',
-                'data' => []
-            ]);
-        }
-    }
+//         }
+//         else{
+//             return response()->json([
+//                 'status' => 0,
+//                 'message' => 'Wrong email, try again',
+//                 'data' => []
+//             ]);
+//         }
+//     }
 
     public function getCitiesAreasApi()
     {
