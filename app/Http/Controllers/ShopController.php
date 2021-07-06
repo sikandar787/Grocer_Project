@@ -121,8 +121,6 @@ class ShopController extends Controller
             $shop->description = $req->description;
             $shop->ur_description = $req->ur_description;
             $shop->number = $req->number;
-            $shop->password = $req->password;
-            $shop->email = $req->email;
             $shop->latitude = $req->latitude;
             $shop->longitude = $req->longitude;
             $shop->address = $req->address;
