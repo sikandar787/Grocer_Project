@@ -100,8 +100,6 @@ class ShopController extends Controller
     public function updateShop($id,Request $req)
     {
 
-
-
         DB::beginTransaction();
         try{
             $shop = Shop::find($id);
@@ -131,8 +129,17 @@ class ShopController extends Controller
             $shop->address = $req->address;
             $shop->coverage_km = $req->coverage_km;
             $shop->city_id = $req->city_id;
-            $shop->area_id = $req->area_id;
 
+            if($req->area_id)
+            {
+                $shop->area_id = $req->area_id;
+            }
+            else{
+                $shop->area_id = $shop->area_id;
+            }
+
+
+            // return $shop;
             $shop->save();
             DB::commit();
 

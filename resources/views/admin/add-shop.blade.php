@@ -74,25 +74,6 @@
                 </div>
             </div>
 
-            @if($errors->first('password'))
-            <div class="alert alert-danger">
-                {{$errors->first('password')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-6">
-                    <input type="text" name="password" class="form-control" id="shop" placeholder="Password">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-6">
-                    <input type="text" name="email" class="form-control" id="shop" placeholder="Email">
-                </div>
-            </div>
-
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-6">

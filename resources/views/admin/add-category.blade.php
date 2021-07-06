@@ -58,7 +58,7 @@
             <div class="form-group row">
                 <label for="category" class="col-sm-2 col-form-label">Urdu Description</label>
                 <div class="col-sm-6">
-                    <textarea name="description" class="form-control urduFont" id="description" cols="10" rows="3"></textarea>
+                    <textarea name="ur_description" class="form-control urduFont" id="description" cols="10" rows="3"></textarea>
                 </div>
             </div>
 

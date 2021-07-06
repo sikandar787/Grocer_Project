@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,11 +63,13 @@ Route::get('/add-banner', function () {
     return view('admin.add-banner');
 });
 
-Route::get('/add-user', function () {
-    return view('admin.add-user');
-});
+// Route::get('/add-user', function () {
+//     return view('admin.add-user');
+// });
 
-
+// Route::get('/view-users ', function () {
+//     return view('admin.view-users');
+// });
 
 Route::get('/add-product', [ProductController::class, 'getCategories']);
 
@@ -149,4 +152,7 @@ Route::get('/edit-banner/{id}',[BannerController::class,'editBanner']);
 Route::post('/update-banner/{id}',[BannerController::class,'updateBanner'])->name('update-banner');
 Route::get('banner/update-status/{id}',[BannerController::class,'statusUpdateBanners']);
 
+Route::get('/view-users',[UserController::class,'viewUsers']);
+Route::get('/changeuserstatus/{id}',[UserController::class,'updateUserStatus']);
+Route::post('/update-status/{id}',[UserController::class,'changeUserStatus'])->name('update-status');
 });

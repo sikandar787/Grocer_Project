@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\City;
 use App\Models\Shop;
 use App\Models\Area;
@@ -21,11 +22,11 @@ class ApiController extends Controller
         return $products;
     }
 
-    public function getAreasApi()
-    {
-        $areas = Area::get();
-        return $areas;
-    }
+    // public function getAreasApi()
+    // {
+    //     $areas = Area::get();
+    //     return $areas;
+    // }
 
     public function getShopsApi()
     {
@@ -33,11 +34,11 @@ class ApiController extends Controller
         return $shops;
     }
 
-    public function getCitiesApi()
-    {
-        $cities = City::get();
-        return $cities;
-    }
+    // public function getCitiesApi()
+    // {
+    //     $cities = City::get();
+    //     return $cities;
+    // }
 
     public function getUnitsApi()
     {
@@ -51,17 +52,17 @@ class ApiController extends Controller
         return $categories;
     }
 
-    public function getLoginApi(Request $request)
+    public function getAdminLoginApi(Request $request)
     {
-        $users = new User();
-        $user = User::where('email',$request->email)->get();
+        $admins = new Admin();
+        $admin = Admin::where('email',$request->email)->get();
 
-        if(!$user->isEmpty())
+        if(!$admin->isEmpty())
         {
-            if(Hash::check($request->password, $user[0]->password))
+            if(Hash::check($request->password, $admin[0]->password))
             {
-                // $token = $user[0]->createToken('MyProject')->accessToken;
-                $data = $user;
+                // $token = $admin[0]->createToken('MyProject')->accessToken;
+                $data = $admin;
                 // $data[0]['token'] = $token;
 
                 return response()->json([
@@ -86,5 +87,37 @@ class ApiController extends Controller
                 'data' => []
             ]);
         }
+    }
+
+    public function getCitiesAreasApi()
+    {
+        $cities = City::with('areas')->get();
+        // return $cities;
+        $abc = [];
+
+        foreach($cities as $index => $city)
+        {
+            $abc[$index]['city-name'] = $city->name;
+            $abc[$index]['area-name'] = $city->areas[0]->name;
+        }
+
+        return $abc;
+        return response([
+            'Cities with Areas' => $abc,
+        ]);
+    }
+
+    public function userRegistrationApi(Request $request)
+    {
+        $users = new User();
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = Hash::make($request->password);
+        $users->phone_number = $request->phone_number;
+        $users->complete_address = $request->complete_address;
+        $users->city_id = $request->city_id;
+        $users->area_id = $request->area_id;
+        $users->save();
+        return response(['Success', 'User registered successfully']);
     }
 }
