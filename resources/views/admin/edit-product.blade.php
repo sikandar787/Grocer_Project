@@ -9,9 +9,6 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-
-
-
     <form class="form-horizontal" method="POST" action="{{route('update-product', $product->id)}}"
         enctype="multipart/form-data">
         @csrf

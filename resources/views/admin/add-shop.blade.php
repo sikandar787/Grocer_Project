@@ -158,7 +158,11 @@
                     <input type="file" name="image" class="form-control-file" id="image">
                 </div>
             </div>
-
+            <div class="form-group row">
+                <input type="hidden" name="latitude" class="form-control" id="lats" placeholder="Latitude">
+                <input type="hidden" name="longitude" class="form-control" id="longs" placeholder="Longitude">
+                <input type="hidden" name="city_id" class="form-control" id="city" placeholder="Longitude">
+            </div>
             @include('admin.area_map')
         </div>
         <!-- /.card-body -->

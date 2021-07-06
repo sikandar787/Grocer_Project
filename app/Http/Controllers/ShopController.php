@@ -132,7 +132,6 @@ class ShopController extends Controller
             $shop->coverage_km = $req->coverage_km;
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
-
             $shop->save();
             DB::commit();
 
@@ -168,6 +167,5 @@ class ShopController extends Controller
        session()->flash('success', 'Shop Status Updated Successfully');
        return redirect('view-shops');
     }
-
 
 }
