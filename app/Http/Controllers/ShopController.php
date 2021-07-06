@@ -99,8 +99,6 @@ class ShopController extends Controller
     public function updateShop($id,Request $req)
     {
 
-
-
         DB::beginTransaction();
         try{
             $shop = Shop::find($id);
@@ -134,6 +132,17 @@ class ShopController extends Controller
             $shop->location_status = $req->location_status;
 
 // return $shop;
+
+            if($req->area_id)
+            {
+                $shop->area_id = $req->area_id;
+            }
+            else{
+                $shop->area_id = $shop->area_id;
+            }
+
+
+            // return $shop;
             $shop->save();
             // $shop->Create($req->except('_token'));
             DB::commit();

@@ -11,7 +11,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">View Units</h3>
+        <h3 class="card-title"></h3>
         <a href="{{url('add-unit')}}" class=" btn btn-primary card-title float-right">Add Unit</a>
     </div>
 

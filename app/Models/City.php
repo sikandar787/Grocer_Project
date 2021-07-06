@@ -16,4 +16,8 @@ class City extends Model
         'longitude'
 
     ];
+
+    public function areas() {
+        return $this->hasMany('App\Models\Area', 'id', 'city_id');
+    }
 }

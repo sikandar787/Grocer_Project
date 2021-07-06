@@ -126,7 +126,7 @@ class BannerController extends Controller
             // something went wrong
         }
 
-        return redirect('view-categories');
+        return redirect('view-banners');
     }
     public function statusUpdateBanners( $id)
      {

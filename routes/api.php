@@ -20,9 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/products', [ApiController::class,'getProductsApi']);
-Route::get('/areas', [ApiController::class,'getAreasApi']);
+Route::get('/cities-areas', [ApiController::class,'getCitiesAreasApi']);
 Route::get('/shops', [ApiController::class,'getShopsApi']);
-Route::get('/cities', [ApiController::class,'getCitiesApi']);
+// Route::get('/cities', [ApiController::class,'getCitiesApi']);
 Route::get('/units', [ApiController::class,'getUnitsApi']);
 Route::get('/categories', [ApiController::class,'getCategoriesApi']);
-Route::post('/login', [ApiController::class,'getLoginApi']);
+Route::post('/login', [ApiController::class,'getAdminLoginApi']);
+Route::post('/user-register', [ApiController::class,'userRegistrationApi']);
