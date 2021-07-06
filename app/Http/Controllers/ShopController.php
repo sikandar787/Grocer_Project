@@ -113,16 +113,15 @@ class ShopController extends Controller
                 $image_path = $old_image;  // Value is not URL but directory file path
                 if(File::exists($image_path)) {
                     File::delete($image_path);
-    }
+                }
             }
+            
 
             $shop->name = $req->name;
             $shop->ur_name = $req->ur_name;
             $shop->description = $req->description;
             $shop->ur_description = $req->ur_description;
             $shop->number = $req->number;
-            $shop->password = $req->password;
-            $shop->email = $req->email;
             $shop->latitude = $req->latitude;
             $shop->longitude = $req->longitude;
             $shop->address = $req->address;
@@ -130,17 +129,6 @@ class ShopController extends Controller
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
             $shop->location_status = $req->location_status;
-
-// return $shop;
-
-            if($req->area_id)
-            {
-                $shop->area_id = $req->area_id;
-            }
-            else{
-                $shop->area_id = $shop->area_id;
-            }
-
 
             // return $shop;
             $shop->save();

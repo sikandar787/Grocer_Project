@@ -141,7 +141,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
-                    <select name="" id="areas" class="form-control select2" onchange="getArea()" required>
+                    <select name="" id="" class="form-control select2 areas" onchange="getArea()" required>
                         <option disabled selected hidden>Select Area</option>
                     </select>
                 </div>
@@ -161,7 +161,7 @@
             <div class="form-group row">
                 <input type="hidden" name="latitude" class="form-control" id="lats" placeholder="Latitude">
                 <input type="hidden" name="longitude" class="form-control" id="longs" placeholder="Longitude">
-                <input type="hidden" name="city_id" class="form-control" id="city" placeholder="Longitude">
+                <input type="hidden" name="area_id" class="form-control" id="city" placeholder="Longitude">
             </div>
             @include('admin.area_map')
         </div>
@@ -186,7 +186,7 @@
                 jQuery.each(data, function(index, value){
                     html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
                 });
-                $('#areas').empty().append(html);
+                $('.areas').empty().append(html);
             }
         });
     }

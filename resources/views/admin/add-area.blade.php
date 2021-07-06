@@ -46,7 +46,7 @@
             <div class="form-group row mt-3">
                 <label for="image" class="col-sm-2 col-form-label">Coverage Area (Km)</label>
                 <div class="col-sm-6">
-                    <input type="text" name="coverage_km" class="form-control" id="category" placeholder="Coverage Area (Km)">
+                    <input type="number" name="coverage_km" class="form-control" id="category" placeholder="Coverage Area (Km)">
                 </div>
             </div>
             <div class="form-group row">
