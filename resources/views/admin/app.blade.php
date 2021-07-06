@@ -523,11 +523,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-banner') || request()->is('view-banners') )  ? 'active' : ''  }}">
-<<<<<<< HEAD
-                                <i class="nav-icon fas fa-laptop"></i>
-=======
                                 <i class="nav-icon fas fa-image"></i>
->>>>>>> f30f300182f1a66fd4052fac8bb52e8394482a3b
                                 <p>
                                     Banners
                                     <i class="fas fa-angle-left right"></i>
