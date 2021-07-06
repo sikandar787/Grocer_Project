@@ -79,19 +79,6 @@
                 {{$errors->first('password')}}
             </div>
             @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-6">
-                    <input type="text" name="password" class="form-control" id="shop" placeholder="Password">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-6">
-                    <input type="text" name="email" class="form-control" id="shop" placeholder="Email">
-                </div>
-            </div>
 
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Address</label>
@@ -105,12 +92,25 @@
                 {{$errors->first('coverage_km')}}
             </div>
             @endif
+
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Coverage Area (Km)</label>
                 <div class="col-sm-6">
                     <input type="text" name="coverage_km" class="form-control" id="shop" placeholder="Coverage Area (Km)">
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="shop" class="col-sm-2 col-form-label">Location Status</label>
+                <div class="col-sm-6">
+                    <select class="form-control select2" name="location_status" onchange="showArea()" id="locationStatus">
+                        <option disabled selected hidden>Select Location Status</option>
+                        <option class="mt-2 p-5" value="0" >Area Specific</option>
+                        <option class="mt-2 p-5" value="1">Over All</option>
+                    </select>
+                </div>
+            </div>
+
 
             @if($errors->first('city_id'))
             <div class="alert alert-danger">
@@ -120,7 +120,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="city_id" onchange="showArea()" id="citySelector">
+                    <select class="form-control select2" name="city_id" onchange="showArea()" id="citySelector">
                         <option disabled selected hidden>Select City</option>
                         @if($cities->count())
                         @foreach($cities as $city)
@@ -141,7 +141,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Area</label>
                 <div class="col-sm-6">
-                    <select name="" id="areas" class="form-control" onchange="getArea()" required>
+                    <select name="" id="areas" class="form-control select2" onchange="getArea()" required>
                         <option disabled selected hidden>Select Area</option>
                     </select>
                 </div>

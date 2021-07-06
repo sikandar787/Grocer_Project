@@ -1,5 +1,5 @@
 @extends('admin.app')
-@section('title','View Banner')
+@section('title','View Banners')
 @section('header_title','Dashboard')
 @section('maincontent')
 

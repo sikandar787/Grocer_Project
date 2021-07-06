@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,11 +63,13 @@ Route::get('/add-banner', function () {
     return view('admin.add-banner');
 });
 
-Route::get('/add-user', function () {
-    return view('admin.add-user');
-});
+// Route::get('/add-user', function () {
+//     return view('admin.add-user');
+// });
 
-
+// Route::get('/view-users ', function () {
+//     return view('admin.view-users');
+// });
 
 Route::get('/add-product', [ProductController::class, 'getCategories']);
 
@@ -79,6 +82,10 @@ Route::get('/edit-shop', [ShopController::class, 'getCities']);
 Route::get('/add-banner', [BannerController::class, 'getCategories']);
 
 Route::get('/edit-banner', [BannerController::class, 'getCategories']);
+
+
+//Route for view Record On Dashboard
+Route::get('/dashboard', [AdminController::class, 'viewRecords']);
 
 // Profile Section routes
 
@@ -130,8 +137,12 @@ Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
 Route::get('/edit-product/{id}',[ProductController::class,'editProduct']);
 Route::post('/update-product/{id}',[ProductController::class,'updateProduct'])->name('update-product');
 Route::get('product/update-status/{id}',[ProductController::class,'statusUpdateProducts']);
+<<<<<<< HEAD
 Route::get('/update-checked',[ProductController::class,'updateChecked']);
 Route::post('/edit-checked',[ProductController::class,'editChecked']);
+=======
+Route::get('/product-details/{id}',[ProductController::class, 'productDetail']);
+>>>>>>> 0b7ebf9632b08e0a9eea1b2a7875ff2ed3e03cc1
 
 
 // Shop routes
@@ -151,4 +162,7 @@ Route::get('/edit-banner/{id}',[BannerController::class,'editBanner']);
 Route::post('/update-banner/{id}',[BannerController::class,'updateBanner'])->name('update-banner');
 Route::get('banner/update-status/{id}',[BannerController::class,'statusUpdateBanners']);
 
+Route::get('/view-users',[UserController::class,'viewUsers']);
+Route::get('/changeuserstatus/{id}',[UserController::class,'updateUserStatus']);
+Route::post('/update-status/{id}',[UserController::class,'changeUserStatus'])->name('update-status');
 });

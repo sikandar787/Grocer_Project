@@ -76,6 +76,7 @@ class BannerController extends Controller
         $shops = Shop::get();
         $products = Product::get();
         $banner =  Banner::find($id);
+        // return $banner;
         return view('admin.edit-banner', compact('banner', 'categories', 'shops', 'products'));
 
     // }else{
@@ -126,7 +127,7 @@ class BannerController extends Controller
             // something went wrong
         }
 
-        return redirect('view-categories');
+        return redirect('view-banners');
     }
     public function statusUpdateBanners( $id)
      {

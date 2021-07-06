@@ -26,7 +26,7 @@
                     <th>Urdu Description</th> --}}
                     <th>Mobile No.</th>
                     <th>City</th>
-                    <th>Area</th>
+                    {{-- <th>Area</th> --}}
                     {{-- <th>Maximum Purchase Limit</th>
                     <th>Weight</th>
                     <th>Unit</th> --}}
@@ -52,7 +52,7 @@
                     <td class=" align-middle">{{$shop->ur_description}}</td> --}}
                     <td class=" align-middle">{{$shop->number}}</td>
                     <td class=" align-middle">{{$shop->cities->name}}</td>
-                    <td class=" align-middle">{{$shop->areas->name}}</td>
+                    {{-- <td class=" align-middle">{{$shop->areas->name}}</td> --}}
                     {{-- <td class=" align-middle">{{$shop->discount_price}}</td>
                     <td class=" align-middle">{{$shop->max_limit}}</td>
                     <td class=" align-middle">{{$shop->weight}}</td> --}}

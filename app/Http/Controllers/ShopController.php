@@ -30,12 +30,11 @@ class ShopController extends Controller
                 'description' => 'required',
                 'ur_description' => 'required',
                 'number' => 'required',
-                'password' => 'required',
                 'latitude' => 'required',
                 'longitude' => 'required',
                 'coverage_km' => 'required',
                 'city_id' => 'required',
-                'area_id' => 'required',
+                // 'area_id' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
             $getUploadedName = HelperController::uplaodsingleImage($req->file('image'),'images/shops/');
@@ -45,15 +44,15 @@ class ShopController extends Controller
             $shop->description = $req->description;
             $shop->ur_description = $req->ur_description;
             $shop->number = $req->number;
-            $shop->password = $req->password;
-            $shop->email = $req->email;
             $shop->latitude = $req->latitude;
             $shop->longitude = $req->longitude;
             $shop->address = $req->address;
             $shop->coverage_km = $req->coverage_km;
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
-            // $shop->image = $req->image;
+            $shop->location_status = $req->location_status;
+            $shop->image = $req->image;
+            // return $shop;
             $shop->save();
         // $category->Create($req->except('_token'));
         return redirect('view-shops');
@@ -100,8 +99,6 @@ class ShopController extends Controller
     public function updateShop($id,Request $req)
     {
 
-
-
         DB::beginTransaction();
         try{
             $shop = Shop::find($id);
@@ -132,7 +129,22 @@ class ShopController extends Controller
             $shop->coverage_km = $req->coverage_km;
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
+            $shop->location_status = $req->location_status;
+
+// return $shop;
+
+            if($req->area_id)
+            {
+                $shop->area_id = $req->area_id;
+            }
+            else{
+                $shop->area_id = $shop->area_id;
+            }
+
+
+            // return $shop;
             $shop->save();
+            // $shop->Create($req->except('_token'));
             DB::commit();
 
 

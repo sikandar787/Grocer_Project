@@ -9,7 +9,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-
+{{-- {{ dd($banner) }} --}}
 
 
     <form class="form-horizontal" method="POST" action="{{route('update-banner', $banner->id)}}"
@@ -22,9 +22,9 @@
             </div>
             @endif
             <div class="form-group row">
-                <label for="product" class="col-sm-2 col-form-label">Name</label>
+                <label for="banner" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="name" value = {{ $banner->name }} class="form-control" id="product" placeholder="Name">
+                    <input type="text" name="name" value = "{{ $banner->name }}" class="form-control" id="banner" placeholder="Name">
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Urdu Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_name" value = {{ $banner->ur_name }} class="form-control urduFont" id="product" placeholder="نام درج کریں">
+                    <input type="text" name="ur_name" value = "{{ $banner->ur_name }}" class="form-control urduFont" id="product" placeholder="نام درج کریں">
                 </div>
             </div>
 

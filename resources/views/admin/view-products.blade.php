@@ -50,6 +50,7 @@
                         <div class="form-check ml-4">
                             <input class="form-check-input checkbox-sm" type="checkbox" id="cheek" value="{{$product->id}}" style="width:16px; height: 16px;">
                         </div>
+
                     </td>
                     <th class="text-right align-middle">{{$key+1}}</th>
                     <td class="text-center align-middle"><img src="{{$product->image}}" class="rounded" height="70"
@@ -84,7 +85,7 @@
                             <i class="fas fa-edit text-primary"></i>
                         </a>
                         <a href="product-details/{{$product->id}}" title="Details">
-                            <i class="fa fa-list-alt" aria-hidden="true"></i>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
                         <a href="delete-product/{{$product->id}}" title="Delete">
                             <i class="fas fa-trash text-danger"></i>

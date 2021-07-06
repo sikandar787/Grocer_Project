@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') | Grocer</title>
+    <title>@yield('title') | Sabzi Express</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -295,7 +295,7 @@
             <a href="{{url('dashboard')}}" class="brand-link">
                 <img src="{{asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Grocer</span>
+                <span class="brand-text font-weight-light">Sabzi Express</span>
             </a>
 
             <!-- <a href="{{url('edit-profile')}}" class="brand-link text-center">
@@ -470,7 +470,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-product') || request()->is('view-products') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-folder"></i>
+                                <i class="nav-icon fas fa-shopping-bag"></i>
                                 <p>
                                     Products
                                     <i class="fas fa-angle-left right"></i>
@@ -523,7 +523,7 @@
                         <li class="nav-item">
                             <a href="#"
                                 class="nav-link {{ ( request()->is('add-banner') || request()->is('view-banners') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-store"></i>
+                                <i class="nav-icon fas fa-image"></i>
                                 <p>
                                     Banners
                                     <i class="fas fa-angle-left right"></i>
@@ -582,7 +582,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="#">Grocer</a>.</strong>
+            <strong>Copyright &copy; 2014-2021 <a href="#">Sabzi Express</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <!-- <b>Version</b> 3.1.0-rc -->

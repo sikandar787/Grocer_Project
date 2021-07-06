@@ -74,25 +74,6 @@
                 </div>
             </div>
 
-            @if($errors->first('password'))
-            <div class="alert alert-danger">
-                {{$errors->first('password')}}
-            </div>
-            @endif
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-6">
-                    <input type="text" name="password" value="{{ $shop->password }}" class="form-control" id="shop" placeholder="Password">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-6">
-                    <input type="text" name="email" value="{{ $shop->email }}" class="form-control" id="shop" placeholder="Email">
-                </div>
-            </div>
-
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-6">
@@ -120,7 +101,7 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-                    <select class="form-control" name="city_id" onchange="showArea()" id="citySelector">
+                    <select class="form-control select2" name="city_id" onchange="showArea()" id="citySelector">
                         <option disabled selected hidden>Select City</option>
                         @if($cities->count())
                         @foreach($cities as $city)
@@ -141,14 +122,20 @@
                 {{$errors->first('area_id')}}
             </div>
             @endif
+
+            {{-- Location Status --}}
             <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Area</label>
+                <label for="shop" class="col-sm-2 col-form-label">Location Status</label>
                 <div class="col-sm-6">
                      <select name="area_id" id="city" class="form-control areas" onchange="getArea()" required>
                         <option disabled selected hidden>Select Area</option>
                         <option class="mt-5 p-5" value="{{$shop->area_id}}" selected>
                             {{$shop->areas->name}}
                         </option>
+                    <select class="form-control select2" name="location_status" onchange="showArea()" id="locationStatus">
+                        <option disabled selected hidden>Select Location Status</option>
+                        <option class="mt-2 p-5" {{ ($shop->location_status) == '0' ? 'selected' : ''}} value="0" >Area Specific</option>
+                        <option class="mt-2 p-5" {{ ($shop->location_status) == '1' ? 'selected' : ''}} value="1">Over All</option>
                     </select>
                 </div>
             </div>
