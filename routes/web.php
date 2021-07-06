@@ -134,6 +134,7 @@ Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
 Route::get('/edit-product/{id}',[ProductController::class,'editProduct']);
 Route::post('/update-product/{id}',[ProductController::class,'updateProduct'])->name('update-product');
 Route::get('product/update-status/{id}',[ProductController::class,'statusUpdateProducts']);
+Route::get('/product-details/{id}',[ProductController::class, 'productDetail']);
 
 
 // Shop routes

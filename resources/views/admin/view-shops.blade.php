@@ -26,7 +26,7 @@
                     <th>Urdu Description</th> --}}
                     <th>Mobile No.</th>
                     <th>City</th>
-                    <th>Area</th>
+                    {{-- <th>Area</th> --}}
                     {{-- <th>Maximum Purchase Limit</th>
                     <th>Weight</th>
                     <th>Unit</th> --}}

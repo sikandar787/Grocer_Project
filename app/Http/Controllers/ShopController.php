@@ -30,7 +30,6 @@ class ShopController extends Controller
                 'description' => 'required',
                 'ur_description' => 'required',
                 'number' => 'required',
-                'password' => 'required',
                 'latitude' => 'required',
                 'longitude' => 'required',
                 'coverage_km' => 'required',
@@ -45,8 +44,6 @@ class ShopController extends Controller
             $shop->description = $req->description;
             $shop->ur_description = $req->ur_description;
             $shop->number = $req->number;
-            $shop->password = $req->password;
-            $shop->email = $req->email;
             $shop->latitude = $req->latitude;
             $shop->longitude = $req->longitude;
             $shop->address = $req->address;
@@ -54,7 +51,8 @@ class ShopController extends Controller
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
             $shop->location_status = $req->location_status;
-            // $shop->image = $req->image;
+            $shop->image = $req->image;
+            // return $shop;
             $shop->save();
         // $category->Create($req->except('_token'));
         return redirect('view-shops');
@@ -135,8 +133,9 @@ class ShopController extends Controller
             $shop->area_id = $req->area_id;
             $shop->location_status = $req->location_status;
 
-return $shop;
+// return $shop;
             $shop->save();
+            // $shop->Create($req->except('_token'));
             DB::commit();
 
 

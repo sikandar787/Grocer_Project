@@ -48,14 +48,16 @@ class ProductController extends Controller
             $product->max_limit = $req->max_limit;
             $product->weight = $req->weight;
             $product->unit_id = $req->unit_id;
+            $product->location_status = $req->location_status;
             // $product->status = $req->status;
             $product->total_sold = $req->total_sold;
             $product->is_featured = $req->is_featured;
-            // $product->shop_id = $req->shop_id;
-            // $product->image = $req->image;
-            // return $product;
+            $product->shop_id = $req->shop_id;
+            $product->image = $req->image;
+            return $product;
+
             $product->save();
-        // $category->Create($req->except('_token'));
+        $product->Create($req->except('_token'));
         return redirect('view-products');
     }
 
@@ -101,21 +103,6 @@ class ProductController extends Controller
 
     public function updateProduct($id,Request $req)
     {
-
-        // $req->validate([
-        //     'name' => 'required',
-        //     'ur_name' => 'required',
-        //     'description' => 'required',
-        //     'ur_description' => 'required',
-        //     'category_id' => 'required',
-        //     'price' => 'required',
-        //     'max_limit' => 'required',
-        //     'weight' => 'required',
-        //     'unit_id' => 'required',
-        //     'is_featured' => 'required',
-        // ]);
-        // return $req->all();
-
         DB::beginTransaction();
         try{
             $product = Product::find($id);
@@ -145,6 +132,7 @@ class ProductController extends Controller
             $product->max_limit = $req->max_limit;
             $product->weight = $req->weight;
             $product->unit_id = $req->unit_id;
+            $product->location_status = $req->location_status;
             // $product->status = $req->status;
             $product->total_sold = $req->total_sold;
             $product->is_featured = $req->is_featured;
@@ -180,6 +168,13 @@ class ProductController extends Controller
        DB::table('products')->where('id', $id)->update($values);
        session()->flash('success', 'Product Status Updated Successfully');
        return redirect('view-products');
+    }
+    public function productDetail($id){
+
+        // $detail= DB::table('products')->find('id', $id)->get();
+        $detail = Product::find($id);
+
+        return view('admin.view-product-detail', compact('detail'));
     }
 
 }

@@ -28,6 +28,7 @@ class CategoryController extends Controller
             $category->ur_description = $req->ur_description;
             $category->save();
         // $category->Create($req->except('_token'));
+        // return $category;
         return redirect('view-categories');
     }
 
@@ -52,29 +53,17 @@ class CategoryController extends Controller
 
     public function editCategory($id)
     {
-        // $id = Auth::guard('admin')->user()->id;
-        // $roleId= Admin::where('id',$id)->first()->role_id;
-        // if($roleId== 1)
-        // {
+
 
         $category =  Category::find($id);
         return view('admin.edit-category', compact('category'));
 
-    // }else{
-    //         // return back()->with('privilege', 'Your do not have any privilege to add product.');
-    //         return redirect()->back()->with('privilege', 'You do not have any privilege to Edit Category.');
-    //     }
+
     }
 
     public function updateCategory($id,Request $req)
     {
 
-        // $req->validate([
-        //         'name' => 'required',
-        //         'ur_name' => 'required',
-        //         'description' => 'required',
-        //         'ur_description' => 'required',
-        // ]);
 
         DB::beginTransaction();
         try{
@@ -104,7 +93,7 @@ class CategoryController extends Controller
 
         } catch (\Exception $e) {
             DB::rollback();
-            // something went wrong
+
         }
 
         return redirect('view-categories');
