@@ -24,7 +24,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="name" value = {{ $product->name }} class="form-control" id="product" placeholder="Name">
+                    <input type="text" name="name" value = "{{ $product->name }}" class="form-control" id="product" placeholder="Name">
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Urdu Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="ur_name" value = {{ $product->ur_name }} class="form-control urduFont" id="product" placeholder="نام درج کریں">
+                    <input type="text" name="ur_name" value = "{{ $product->ur_name }}" class="form-control urduFont" id="product" placeholder="نام درج کریں">
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Price</label>
                 <div class="col-sm-6">
-                    <input type="text" name="price" value = {{ $product->price }} class="form-control" id="product" placeholder="Price">
+                    <input type="text" name="price" value = "{{ $product->price }}" class="form-control" id="product" placeholder="Price">
                 </div>
             </div>
 
@@ -108,7 +108,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Discount Price</label>
                 <div class="col-sm-6">
-                    <input type="text" name="discount_price" value = {{ $product->discount_price }} class="form-control" id="product" placeholder="Discount Price">
+                    <input type="text" name="discount_price" value = "{{ $product->discount_price }}" class="form-control" id="product" placeholder="Discount Price">
                 </div>
             </div>
 
@@ -120,7 +120,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Maximum Purchase Limit</label>
                 <div class="col-sm-6">
-                    <input type="text" name="max_limit" value = {{ $product->max_limit }} class="form-control" id="product" placeholder="Maximum Purchase Limit">
+                    <input type="text" name="max_limit" value = "{{ $product->max_limit }}" class="form-control" id="product" placeholder="Maximum Purchase Limit">
                 </div>
             </div>
 
@@ -132,7 +132,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Weight</label>
                 <div class="col-sm-6">
-                    <input type="text" name="weight" value = {{ $product->weight }} class="form-control" id="product" placeholder="Weight">
+                    <input type="text" name="weight" value = "{{ $product->weight }}" class="form-control" id="product" placeholder="Weight">
                 </div>
             </div>
 
@@ -144,7 +144,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Unit</label>
                 <div class="col-sm-6">
-                    <select class="form-control select2" name="unit_id" value = {{ $product->unit_id }}>
+                    <select class="form-control select2" name="unit_id">
                         <option disabled selected hidden>Select Unit</option>
                         @if($units->count())
                         @foreach($units as $unit)
@@ -175,7 +175,7 @@
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Total Sold</label>
                 <div class="col-sm-6">
-                    <input type="text" name="total_sold" value = {{ $product->total_sold }} class="form-control" id="product" placeholder="Total Sold">
+                    <input type="text" name="total_sold" value = "{{ $product->total_sold }}" class="form-control" id="product" placeholder="Total Sold">
                 </div>
             </div>
 
