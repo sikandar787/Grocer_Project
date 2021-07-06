@@ -180,5 +180,4 @@ class ShopController extends Controller
        return redirect('view-shops');
     }
 
-
 }

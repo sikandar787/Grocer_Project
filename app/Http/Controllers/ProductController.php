@@ -177,4 +177,26 @@ class ProductController extends Controller
         return view('admin.view-product-detail', compact('detail'));
     }
 
+    public function updateChecked(Request $request){
+        $arr = $request->id;
+        $products = [];
+        foreach($arr as $a){
+            $product = Product::where('id', $a)->first();
+            array_push($products, $product);
+        }
+        return view('admin.edit-checked',compact('products'));
+    }
+
+    public function editChecked(Request $request){
+        $arr = $request->id;
+        foreach($arr as $index => $id){
+            $product = Product::find($id);
+            $product->name = $request->name[$index];
+            $product->price = $request->price[$index];
+            $product->discount_price = $request->discount_price[$index];
+            $product->update();
+        }
+        return redirect('view-products');
+    }
+
 }

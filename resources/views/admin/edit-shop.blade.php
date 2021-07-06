@@ -127,12 +127,23 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Location Status</label>
                 <div class="col-sm-6">
+                     <select name="area_id" id="city" class="form-control areas" onchange="getArea()" required>
+                        <option disabled selected hidden>Select Area</option>
+                        <option class="mt-5 p-5" value="{{$shop->area_id}}" selected>
+                            {{$shop->areas->name}}
+                        </option>
                     <select class="form-control select2" name="location_status" onchange="showArea()" id="locationStatus">
                         <option disabled selected hidden>Select Location Status</option>
                         <option class="mt-2 p-5" {{ ($shop->location_status) == '0' ? 'selected' : ''}} value="0" >Area Specific</option>
                         <option class="mt-2 p-5" {{ ($shop->location_status) == '1' ? 'selected' : ''}} value="1">Over All</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="form-group row">
+                <input type="hidden" name="latitude" class="form-control" id="lats" placeholder="Latitude" value="{{$shop->latitude}}">
+                <input type="hidden" name="longitude" class="form-control" id="longs" placeholder="Longitude" value="{{$shop->longitude}}">
+                
             </div>
 
             @if($errors->first('image'))
@@ -165,11 +176,11 @@
             type: 'get',
             data: {id:cityId},
             success: function(data){
-                var html = '';
+                var html = '<option>Select Area</option>';
                 jQuery.each(data, function(index, value){
                     html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
                 });
-                $('#areas').append(html);
+                $('.areas').empty().append(html);
             }
         });
     }

@@ -1,14 +1,10 @@
-    <div class="form-group row">
-        <input type="hidden" name="latitude" class="form-control" id="lats" placeholder="Latitude">
-        <input type="hidden" name="longitude" class="form-control" id="longs" placeholder="Longitude">
-        <input type="hidden" name="area_id" class="form-control" id="city" placeholder="Area Id">
-    </div>
+    
     <!--map -->
     <div id="map" style="height: 100%; padding-top: 500px;"></div>
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 <script type="text/javascript">
     function getArea(){
-    var cityId = jQuery('#areas').val();
+    var cityId = jQuery('.areas').val();
     var arr = cityId.split(',');
     var city = arr[0];
     document.getElementById('city').value = city;
