@@ -25,13 +25,17 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
+        // return $request->all();
+
         // return $request->session();
         // mujay tw visual code ko error la raha hai
         $credentials = $request->only('email', 'password');
         // return \Hash::make(123456789);
         if (Auth::guard('admin')->attempt($credentials)) {
+            // return $credentials;
            // return auth()->guard('admin')->user();
             return redirect()->intended('dashboard');
+            // return view('admin.dashboard');
         }
         else{
             return redirect("login")->with('message', 'Login details are not valid!');
@@ -84,16 +88,7 @@ class AdminController extends Controller
 
 
     // Function to view Record On Dashboard
-    public function viewRecords (){
-
-        $products= DB::table('products')->count();
-        $categories= DB::table('categories')->count();
-        $cities= DB::table('cities')->count();
-        $areas= DB::table('areas')->count();
-        $shops= DB::table('shops')->count();
-        $banners= DB::table('banners')->count();
-        return view('admin.dashboard', compact('products', 'categories', 'cities', 'areas','shops','banners'));
-    }
+   
 
 
 }
