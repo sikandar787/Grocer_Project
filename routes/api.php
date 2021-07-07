@@ -19,10 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('/products', [ApiController::class,'getProductsApi']);
-Route::get('/overall-products', [ApiController::class,'getOverallProductsApi']);
+Route::post('/products/{id}', [ApiController::class,'getProductsApi']);
+// Route::get('/overall-products', [ApiController::class,'getOverallProductsApi']);
+// Route::get('/specific-products', [ApiController::class,'getSpecificProductsApi']);
 Route::get('/cities-areas', [ApiController::class,'getCitiesAreasApi']);
-Route::get('/shops', [ApiController::class,'getShopsApi']);
+Route::get('/overall-shops', [ApiController::class,'getOverallShopsApi']);
+Route::get('/specific-shops', [ApiController::class,'getSpecificShopsApi']);
 // Route::get('/cities', [ApiController::class,'getCitiesApi']);
 Route::post('/areas-by-city/{id}', [ApiController::class,'getAreasbyCityApi']);
 Route::get('/units', [ApiController::class,'getUnitsApi']);
