@@ -54,11 +54,7 @@ class ProductController extends Controller
             $product->is_featured = $req->is_featured;
             $product->shop_id = $req->shop_id;
             $product->image = $req->image;
-<<<<<<< HEAD
-
-=======
             // return $product;
->>>>>>> 2a4d99a1170acb83154baf223148403156571a08
             $product->save();
         // $product->Create($req->except('_token'));
         return redirect('view-products');
