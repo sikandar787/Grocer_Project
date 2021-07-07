@@ -11,16 +11,30 @@ use App\Models\Category;
 use App\Models\Unit;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\UserLogin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ApiController extends Controller
 {
-    public function getProductsApi()
+    public function getOverallProductsApi()
     {
-        $products = Product::get();
-        return $products;
+        $products = Product::where('location_status', 1)->get();
+        if(!$products->isEmpty())
+        {
+         return $products;
+        }
+        else
+        {
+            return "No Products Found!";
+        }
     }
+
+    // public function getProductsApi()
+    // {
+    //     $products = Product::get();
+    //     return $products;
+    // }
 
     // public function getAreasApi()
     // {
@@ -39,6 +53,19 @@ class ApiController extends Controller
     //     $cities = City::get();
     //     return $cities;
     // }
+
+    public function getAreasbyCityApi($id)
+    {
+        $areas = Area::where('city_id', $id)->get();
+        if(!$areas->isEmpty())
+        {
+         return $areas;
+        }
+        else
+        {
+            return "No Areas Found!";
+        }
+    }
 
     public function getUnitsApi()
     {
@@ -120,4 +147,51 @@ class ApiController extends Controller
         $users->save();
         return response(['Success', 'User registered successfully']);
     }
-}
+
+    public function userLoginApi(Request $request,$id,$latitude,$longitude)
+    {
+        // return $latitude;
+
+        $users = User::get();
+        $user = User::where('phone_number',$request->phone_number)->get(['phone_number','password']);
+        if(!$user->isEmpty())
+        {
+            if(Hash::check($request->password, $user[0]->password))
+            {
+                $token = $user[0]->createToken('MyProject')->accessToken;
+                $data = $user;
+                $data[0]['token'] = $token;
+
+
+
+                $userlogin = new UserLogin();
+                $userlogin->user_id = $id;
+                $userlogin->latitude = $latitude;
+                $userlogin->longitude = $longitude;
+                // return $userlogin;
+                $userlogin->save();
+
+                 return response()->json([
+                    'status' => 1,
+                    'message' => 'Successfully logged in',
+                    'data' => $data
+                ]);
+            }
+            else{
+                return response()->json([
+                    'status' => 0,
+                    'message' => 'Wrong Password, try again',
+                    'data' => []
+                ]);
+            }
+
+        }
+        else{
+            return response()->json([
+                'status' => 0,
+                'message' => 'Wrong Phone Number, try again',
+                'data' => []
+            ]);
+        }
+    }
+} //class bracket ends

@@ -51,7 +51,7 @@ class ShopController extends Controller
             $shop->city_id = $req->city_id;
             $shop->area_id = $req->area_id;
             $shop->location_status = $req->location_status;
-            $shop->image = $req->image;
+            // $shop->image = $req->image;
             // return $shop;
             $shop->save();
         // $category->Create($req->except('_token'));
@@ -115,7 +115,7 @@ class ShopController extends Controller
                     File::delete($image_path);
                 }
             }
-            
+
 
             $shop->name = $req->name;
             $shop->ur_name = $req->ur_name;
