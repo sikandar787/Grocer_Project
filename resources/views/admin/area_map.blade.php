@@ -2,7 +2,22 @@
     <!--map -->
     <div id="map" style="height: 100%; padding-top: 500px;"></div>
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-<script type="text/javascript">
+<script type="text/javascript"> 
+    function showArea(){
+        var cityId = jQuery('#citySelector').val();
+        $.ajax({
+            url: 'get-area',
+            type: 'get',
+            data: {id:cityId},
+            success: function(data){
+                var html = '<option>Select Area</option>';
+                jQuery.each(data, function(index, value){
+                    html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
+                });
+                $('.areas').empty().append(html);
+            }
+        });
+    }
     function getArea(){
     var cityId = jQuery('.areas').val();
     var arr = cityId.split(',');

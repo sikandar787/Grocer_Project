@@ -10,6 +10,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,7 +86,7 @@ Route::get('/edit-banner', [BannerController::class, 'getCategories']);
 
 
 //Route for view Record On Dashboard
-Route::get('/dashboard', [AdminController::class, 'viewRecords']);
+Route::get('/dashboard', [DashboardController::class, 'viewRecords']);
 
 // Profile Section routes
 
@@ -148,7 +149,7 @@ Route::get('/view-shops',[ShopController::class,'viewShops']);
 Route::get('/delete-shop/{id}',[ShopController::class,'deleteShop']);
 Route::get('/edit-shop/{id}',[ShopController::class,'editShop']);
 Route::post('/update-shop/{id}',[ShopController::class,'updateShop'])->name('update-shop');
-Route::get('/get-area',[ShopController::class,'getArea']);
+Route::get('get-area',[ShopController::class,'getArea']);
 Route::get('shop/update-status/{id}',[ShopController::class,'statusUpdateShops']);
 
 // Banner routes
