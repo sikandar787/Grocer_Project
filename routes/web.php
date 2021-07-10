@@ -134,7 +134,6 @@ Route::get('area/update-status/{id}',[AreaController::class,'statusUpdateAreas']
 // Product routes
 Route::post('/add-product', [ProductController::class, 'addProduct'])->name('add-product');
 Route::get('/view-products',[ProductController::class,'viewProducts']);
-Route::post('/view-products',[ProductController::class,'viewProducts']);
 Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
 Route::get('/edit-product/{id}',[ProductController::class,'editProduct']);
 Route::post('/update-product/{id}',[ProductController::class,'updateProduct'])->name('update-product');
@@ -152,7 +151,7 @@ Route::get('/edit-shop/{id}',[ShopController::class,'editShop']);
 Route::post('/update-shop/{id}',[ShopController::class,'updateShop'])->name('update-shop');
 Route::get('get-area',[ShopController::class,'getArea']);
 Route::get('shop/update-status/{id}',[ShopController::class,'statusUpdateShops']);
-Route::get('get-specefic-shops',[ShopController::class,'getSpeceficShops']);
+Route::get('get-shops',[ShopController::class,'getShops']);
 
 
 // Banner routes
