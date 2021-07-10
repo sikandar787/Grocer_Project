@@ -155,19 +155,19 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">Shop</label>
                 <div class="col-sm-6">
-                    <select class="form-control select2" name="shop_id">
+                    <select class="form-control select2" name="location_status" onchange="getShops()" id="locationStatus">
+                        <option disabled selected hidden>Select Location Status</option>
+                        <option class="mt-2 p-5" value="0" >Area Specific</option>
+                        <option class="mt-2 p-5" value="1">Over All</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="shop" class="col-sm-2 col-form-label">Shops</label>
+                <div class="col-sm-6">
+                    <select class="form-control select2 shops" name="shop_id">
                         <option disabled selected hidden>Select Shop</option>
-                        @foreach($shops as $shop)
-                        @if($shop->location_status == 1)
-                        <optgroup label="Overall Shops">
-                        <option class="mt-2 p-5" value="{{ $shop->id }}" >{{ $shop->name }}</option>
-                        </optgroup>
-                        @else
-                        <optgroup label="Area Specific Shops">
-                        <option class="mt-2 p-5" value="{{ $shop->id }}" >{{ $shop->name }}</option>
-                        </optgroup>
-                        @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -218,4 +218,23 @@
     </form>
 </div>
 <!-- /.card -->
+
+<script>
+    function getShops(){
+        var location = jQuery('#locationStatus').val();
+        $.ajax({
+            url: 'get-specefic-shops',
+            type: 'get',
+            data: {id:location},
+            success: function(data){
+                // alert(data);
+                var html = '<option>Select Shop</option>';
+                jQuery.each(data, function(index, value){
+                    html += '<option value="' + value.id + '">' + value.name + '</option>';
+                });
+                $('.shops').empty().append(html);
+            }
+        });
+    }
+</script>
 @endsection

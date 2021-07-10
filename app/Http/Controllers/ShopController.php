@@ -168,4 +168,16 @@ class ShopController extends Controller
        return redirect('view-shops');
     }
 
+    public function getShops(Request $request){
+        $areaId = $request->id;
+        $shops = Shop::select('name','latitude','longitude')->where('area_id',$areaId)->get();
+        return $shops;
+    }
+
+    public function getSpeceficShops(Request $request){
+        $location = $request->id;
+        $shops = Shop::where('location_status', $location)->get();
+        return $shops;
+    }
+
 }

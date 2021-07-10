@@ -5,6 +5,13 @@
 <script type="text/javascript"> 
     function showArea(){
         var cityId = jQuery('#citySelector').val();
+        var arr = cityId.split(',');
+        var city = arr[0];
+        document.getElementById('city').value = city;
+        var latitude = arr[1];
+        var longitude = arr[2];
+        showCity(latitude, longitude);
+        var cityId = jQuery('#city').val();
         $.ajax({
             url: 'get-area',
             type: 'get',
@@ -19,14 +26,68 @@
         });
     }
     function getArea(){
-    var cityId = jQuery('.areas').val();
-    var arr = cityId.split(',');
-    var city = arr[0];
-    document.getElementById('city').value = city;
-    var latitude = arr[1];
-    var longitude = arr[2];
-    showCity(latitude, longitude);
+        var cityId = jQuery('.areas').val();
+        var arr = cityId.split(',');
+        var area = arr[0];
+        document.getElementById('area').value = area;
+        var latitude = arr[1];
+        var longitude = arr[2];
+        // showCity(latitude, longitude);
+
+        const myLatlng = { lat:parseFloat(latitude) , lng: parseFloat(longitude) };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 12,
+            center: myLatlng,
+        });
+        // Create the initial InfoWindow.
+        let infoWindow = new google.maps.InfoWindow({
+        });
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title:"Hello World!"
+        });
+        marker.setMap(map);
+        infoWindow.open(map);
+        map.addListener("click", (mapsMouseEvent) => {
+            // Close the current InfoWindow.
+            infoWindow.close();
+            // Create a new InfoWindow.
+            infoWindow = new google.maps.InfoWindow({
+            position: mapsMouseEvent.latLng,
+            });
+            infoWindow.setContent(
+            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+            );
+            infoWindow.open(map);
+            var data = mapsMouseEvent.latLng.toJSON();
+            var data_arr = Object.values(data);
+            var lats = data_arr[0].toFixed(4);
+            var longs = data_arr[1].toFixed(4);
+            document.getElementById('lats').value = lats;
+            document.getElementById('longs').value = longs;
+        });
+        $.ajax({
+            url: 'get-shops',
+            type: 'get',
+            data: {id:area},
+            success: function(data){
+                jQuery.each(data, function(index, value){
+                    const myLatlng = { lat: value.latitude, lng: value.longitude };
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        title:value.name,
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                        }
+                    });
+                    marker.setMap(map);
+                    infoWindow.open(map);
+                });
+            }
+        });  
     }
+
+    
     function showCity(latitude, longitude) {
     const myLatlng = { lat:parseFloat(latitude) , lng: parseFloat(longitude) };
     const map = new google.maps.Map(document.getElementById("map"), {
