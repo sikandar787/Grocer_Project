@@ -15,8 +15,11 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <button id="update_checked" class="btn btn-secondary" onclick="getid()">Edit Multiple Records</button>
+        <button id="update_checked" class="btn btn-secondary" onclick="getid()" disabled>Edit Multiple Records</button><br>
+        <input class="form-check-input checkbox-sm" type="checkbox" id="checkAll" style="width:16px; height: 16px; position: relative; margin: 1%;"> Select All
+
         <table id="example1" class="table table-bordered table-striped">
+        
             <div class="msg" style="text-align: left; background-color:rgb(129, 197, 129);">{{ session('success') }}</div>
 
             <thead>
@@ -48,7 +51,7 @@
                 <tr>
                     <td class="text-right align-middle">
                         <div class="form-check ml-4">
-                            <input class="form-check-input checkbox-sm" type="checkbox" id="cheek" value="{{$product->id}}" style="width:16px; height: 16px;">
+                            <input class="form-check-input checkbox-sm" type="checkbox" id="cheek" value="{{$product->id}}" style="width:16px; height: 16px;" onclick="updateBtn()">
                         </div>
 
                     </td>
@@ -110,6 +113,23 @@ toastr.success("{!! Session::get('product_deleted') !!}");
 </script>
 @endif
 <script type="text/javascript">
+    $('#checkAll').click(function () {    
+        $('input:checkbox').prop('checked', this.checked); 
+        if($('#update_checked').prop('disabled')){
+            $('#update_checked').prop('disabled', false);
+        } 
+        else{
+            $('#update_checked').prop('disabled', true);
+        } 
+    });
+    function updateBtn(){
+        if($('#cheek:checked').length > 0){
+            $('#update_checked').prop('disabled', false);
+        }
+        else{
+            $('#update_checked').prop('disabled', true);
+        }
+    }
     function getid(){
         var arr = [];
         $("#cheek:checked").each(function(){
@@ -117,7 +137,7 @@ toastr.success("{!! Session::get('product_deleted') !!}");
         });
         console.log(arr);
         $.ajax({
-            url: '/update-checked',
+            url: 'update-checked',
             type: 'get',
             data: {'id': arr},
             success: (function (response) {

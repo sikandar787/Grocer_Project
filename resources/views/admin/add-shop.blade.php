@@ -120,11 +120,11 @@
             <div class="form-group row">
                 <label for="shop" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-6">
-                    <select class="form-control select2" name="city_id" onchange="showArea()" id="citySelector">
+                    <select class="form-control select2" name="" onchange="showArea()" id="citySelector">
                         <option disabled selected hidden>Select City</option>
                         @if($cities->count())
                         @foreach($cities as $city)
-                        <option class="mt-2 p-5" value="{{$city->id}}">{{$city->name}}</option>
+                        <option class="mt-2 p-5" value='{{$city->id}},{{$city->latitude}},{{$city->longitude}}'>{{$city->name}}</option>
                         @endforeach
                         @else
                         <option>No Cities Found</option>
@@ -161,7 +161,8 @@
             <div class="form-group row">
                 <input type="hidden" name="latitude" class="form-control" id="lats" placeholder="Latitude">
                 <input type="hidden" name="longitude" class="form-control" id="longs" placeholder="Longitude">
-                <input type="hidden" name="area_id" class="form-control" id="city" placeholder="Longitude">
+                <input type="hidden" name="area_id" class="form-control" id="area" placeholder="Longitude">
+                <input type="hidden" name="city_id" class="form-control" id="city" placeholder="Longitude">
             </div>
             @include('admin.area_map')
         </div>
