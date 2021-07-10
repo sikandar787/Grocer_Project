@@ -63,6 +63,30 @@
                     </select>
                 </div>
             </div>
+            
+            @if($errors->first('city_id'))
+            <div class="alert alert-danger">
+                {{$errors->first('city_id')}}
+            </div>
+            @endif
+            <div class="form-group row">
+                <label for="product" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-6">
+                    <select class="form-control select2" name="city_id">
+                        <option disabled selected hidden>Select City</option>
+                        @if($cities->count())
+                        @foreach($cities as $city)
+                        <option class="mt-5 p-5" value="{{$city->id}}" @if($city->id ==
+                            $banner->city_id) selected @endif>
+                            {{$city->name}}
+                        </option>
+                        @endforeach
+                        @else
+                        <option>No Cities Found</option>
+                        @endif
+                    </select>
+                </div>
+            </div>
 
             @if($errors->first('shop_id'))
             <div class="alert alert-danger">

@@ -153,12 +153,21 @@
             </div>
 
             <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Location Status</label>
+                <label for="shop" class="col-sm-2 col-form-label">Shop</label>
                 <div class="col-sm-6">
-                    <select class="form-control select2" name="location_status" onchange="showArea()" id="locationStatus">
-                        <option disabled selected hidden>Select Location Status</option>
-                        <option class="mt-2 p-5" value="0" >Area Specific</option>
-                        <option class="mt-2 p-5" value="1">Over All</option>
+                    <select class="form-control select2" name="shop_id">
+                        <option disabled selected hidden>Select Shop</option>
+                        @foreach($shops as $shop)
+                        @if($shop->location_status == 1)
+                        <optgroup label="Overall Shops">
+                        <option class="mt-2 p-5" value="{{ $shop->id }}" >{{ $shop->name }}</option>
+                        </optgroup>
+                        @else
+                        <optgroup label="Area Specific Shops">
+                        <option class="mt-2 p-5" value="{{ $shop->id }}" >{{ $shop->name }}</option>
+                        </optgroup>
+                        @endif
+                        @endforeach
                     </select>
                 </div>
             </div>

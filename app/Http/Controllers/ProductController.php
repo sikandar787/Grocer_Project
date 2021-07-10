@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit;
+use App\Models\Shop;
+use App\Models\City;
+use App\Models\Area;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -16,7 +19,8 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $units = Unit::get();
-        return view('admin.add-product')->with(compact('categories', 'units'));
+        $shops = Shop::get();
+        return view('admin.add-product')->with(compact('categories', 'units', 'shops'));
     }
 
     public function addProduct(Request $req)
@@ -60,12 +64,23 @@ class ProductController extends Controller
         return redirect('view-products');
     }
 
-    public function viewProducts()
+    public function viewProducts(Request $req)
     {
-        $products = Product::with('categories', 'units')->orderBy('id','DESC')->get();
+        $query = Product::orderBy('created_at','desc');
+        if($req->min_price && $req->max_price){
+            $query = $query->where('price','>=',$req->min_price);
+            $query = $query->where('price','<=',$req->max_price);
+            $products = $query->paginate(5);
+        }
+        else{
+            $products = Product::with('categories', 'units', 'shops.cities', 'shops.areas')->orderBy('id','DESC')->get();
+        }
+                $cities = City::get();
+                $areas = Area::get();
+        // return $products;
         // $categories = Category::where('status', 1)->get();
         // return $products;
-        return view('admin.view-products',compact('products'));
+        return view('admin.view-products',compact('products', 'cities', 'areas'));
     }
 
     public function deleteProduct($id)
@@ -197,5 +212,16 @@ class ProductController extends Controller
         }
         return redirect('view-products');
     }
-
+    
+    // public function priceFilter(Request $request) {
+    // $query = Product::orderBy('created_at','desc');
+    // if($request->min_price && $request->max_price){
+    //     // This will only execute if you received any price
+    //     // Make you you validated the min and max price properly
+    //     $query = $query->where('price','>=',$request->min_price);
+    //     $query = $query->where('price','<=',$request->max_price);
+    // }
+    // $products = $query->paginate(5);
+    // return view('view-products', compact('products'));
+    // }
 }

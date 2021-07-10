@@ -13,7 +13,7 @@
                     <div class="inner">
                         <h3>{{ $products }}</h3>
 
-                        <p>Our Products</p>
+                        <p>Products</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>

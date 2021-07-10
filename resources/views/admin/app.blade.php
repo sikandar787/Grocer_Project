@@ -347,70 +347,16 @@
                                 </p>
                             </a>
                         </li>
-                        {{-- Profile Nav --}}
+                        <!-- Profile Nav -->
                         <li class="nav-item">
                             <a href="{{ url('edit-profile') }}" class="nav-link">
                                 <i class="fas fa-user-edit"></i>
                                 <p class="text">Profile</p>
                             </a>
                         </li>
-                        {{-- ! Profile Nav End --}}
-                        <!-- Category Nav -->
-                        <li class="nav-item">
-                            <a href="#"
-                                class="nav-link {{ ( request()->is('add-category') || request()->is('view-categories') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-list"></i>
-                                <p>
-                                    Categories
-                                    <i class="fas fa-angle-left right"></i>
-
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ url('add-category') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Category</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('view-categories') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Categories</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- Category Nav End -->
-                        </li>
-                        {{-- Unit Nav --}}
-                        <li class="nav-item">
-                            <a href="#"
-                                class="nav-link {{ ( request()->is('add-unit') || request()->is('view-unit') ) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-weight"></i>
-                                <p>
-                                    Units
-                                    <i class="fas fa-angle-left right"></i>
-
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item" >
-                                    <a href="{{ url('add-unit') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Unit</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('view-units') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Units</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- Category Nav End -->
-                        </li>
-                                {{-- City NAv --}}
-
+                        <!-- Profile Nav End -->
+                        
+                        <!-- City NAv -->
                                 <li class="nav-item">
                                     <a href="#"
                                         class="nav-link {{ ( request()->is('add-city') || request()->is('view-cities') ) ? 'active' : '' }}">
@@ -435,9 +381,8 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <!-- Category Nav End -->
                                 </li>
-                                {{-- City Nav End --}}
+                                <!-- City Nav End -->
 
                                 <!-- Area Nav -->
                         <li class="nav-item">
@@ -465,33 +410,34 @@
                                 </li>
                             </ul>
                             <!-- Area Nav End -->
-
-                            <!-- Product Nav -->
+                            
+                        <!-- Category Nav -->
                         <li class="nav-item">
                             <a href="#"
-                                class="nav-link {{ ( request()->is('add-product') || request()->is('view-products') )  ? 'active' : ''  }}">
-                                <i class="nav-icon fas fa-shopping-bag"></i>
+                                class="nav-link {{ ( request()->is('add-category') || request()->is('view-categories') )  ? 'active' : ''  }}">
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>
-                                    Products
+                                    Categories
                                     <i class="fas fa-angle-left right"></i>
 
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('add-product') }}" class="nav-link">
+                                    <a href="{{ url('add-category') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Product</p>
+                                        <p>Add Category</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('view-products') }}" class="nav-link">
+                                    <a href="{{ url('view-categories') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>View Products</p>
+                                        <p>View Categories</p>
                                     </a>
                                 </li>
                             </ul>
-                            <!-- Product Nav End -->
+                            <!-- Category Nav End -->
+                        </li>
 
                             <!-- Shops Nav -->
                         <li class="nav-item">
@@ -519,6 +465,34 @@
                                 </li>
                             </ul>
                             <!-- Shops Nav End -->
+                            
+                            <!-- Product Nav -->
+                        <li class="nav-item">
+                            <a href="#"
+                                class="nav-link {{ ( request()->is('add-product') || request()->is('view-products') )  ? 'active' : ''  }}">
+                                <i class="nav-icon fas fa-shopping-bag"></i>
+                                <p>
+                                    Products
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('add-product') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Product</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('view-products') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Products</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Product Nav End -->
+                            
                             <!-- Banners Nav -->
                         <li class="nav-item">
                             <a href="#"
@@ -545,6 +519,34 @@
                                 </li>
                             </ul>
                             <!-- Banners Nav End -->
+                            
+                        <!-- Unit Nav -->
+                        <li class="nav-item">
+                            <a href="#"
+                                class="nav-link {{ ( request()->is('add-unit') || request()->is('view-unit') ) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-weight"></i>
+                                <p>
+                                    Units
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item" >
+                                    <a href="{{ url('add-unit') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Unit</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('view-units') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Units</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Banners Nav End -->
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('signout') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>

@@ -29,6 +29,7 @@ Route::get('/specific-shops', [ApiController::class,'getSpecificShopsApi']);
 Route::post('/areas-by-city/{id}', [ApiController::class,'getAreasbyCityApi']);
 Route::get('/units', [ApiController::class,'getUnitsApi']);
 Route::get('/categories', [ApiController::class,'getCategoriesApi']);
+Route::post('/banners/{id}', [ApiController::class,'getBannersApi']);
 Route::post('/login', [ApiController::class,'getAdminLoginApi']);
 Route::post('/user-register', [ApiController::class,'userRegistrationApi']);
 Route::post('/user-login/{id}/{latitude}/{longitude}', [ApiController::class,'userLoginApi']);

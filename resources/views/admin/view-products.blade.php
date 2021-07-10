@@ -14,14 +14,89 @@
         style="z-index:10000; display: none; background: green; font-weight: 450; width: 350px; position: fixed; top: 32%; left: 22%;  color: white; padding: 5px 20px">
     </div>
     <!-- /.card-header -->
+    <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+        @csrf
+        <div class="card-body">
+
+            <!--<div class="form-group row">-->
+            <!--    <label for="price" class="col-sm-2 col-form-label">Price Filter</label>-->
+            <!--    <div class="col-sm-8">-->
+            <!--        <input type="text" name="min_price" placeholder="Min Price">-->
+            <!--        <input type="text" name="max_price" placeholder="Max Price">-->
+            <!--    </div>-->
+            <!--</div>-->
+            
+            <div class="form-group row">
+                <label for="status" class="col-sm-2 col-form-label">City Filter</label>
+                <div class="col-sm-6">
+                    <select class="select2 form-control" name="city_id">
+                        <option disabled selected hidden>
+                            Search City
+                        </option>
+                        @if($cities->count() > 0)
+                        @foreach($cities as $city)
+                        <option value="{{ $city->id }}">
+                            {{ $city->name }}
+                        </option>
+                        @endforeach
+                        @else
+                        <option>No Cities Found</option>
+                        @endif
+                        <!--list of status helper calss ma bana k loop kar lo.. wasay hlpr calss ki zarorat nh q k ik hi jaga us haonay hain. agr bar bar use krnay hain tw helper class ma bana lo. -->
+                    </select>
+                </div>
+            </div>
+            <!-- City filter end -->
+            
+            <div class="form-group row">
+                <label for="status" class="col-sm-2 col-form-label">Area Filter</label>
+                <div class="col-sm-6">
+                    <select class="select2 form-control" name="area_id">
+                        <option disabled selected hidden>
+                            Search Area
+                        </option>
+                        @if($areas->count() > 0)
+                        @foreach($areas as $area)
+                        <option value="{{ $area->id }}">
+                            {{ $area->name }}
+                        </option>
+                        @endforeach
+                        @else
+                        <option>No Areas Found</option>
+                        @endif
+                        <!--list of status helper calss ma bana k loop kar lo.. wasay hlpr calss ki zarorat nh q k ik hi jaga us haonay hain. agr bar bar use krnay hain tw helper class ma bana lo. -->
+                    </select>
+                </div>
+            </div>
+            <!-- Area filter end -->
+            
+            <div class="form-group row">
+                <label for="price" class="col-sm-2 col-form-label">Price Filter</label>
+                <div class="col-sm-3">
+                    <input type="number" name="min_price" class="form-control" id="price" placeholder="Min Price" required>
+                </div>
+                <div class="col-sm-3">
+                    <input type="number" name="max_price" class="form-control" id="price" placeholder="Max Price" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <!--<button type="submit" style="padding: 10px 50px; background-color: #10ac84; color: white; box-shadow: 0 0 0 1px;"-->
+            <!--    class="btn btn-info">Filter</button>-->
+            <button type="submit" class="pushy__btn pushy__btn--sm pushy__btn--green" style="padding: 10px 50px "
+                class="btn btn-info">Filter</button>
+        </div>
+    </form>
+            <!-- Price filter end -->
+    
     <div class="card-body">
-        <button id="update_checked" class="btn btn-secondary" onclick="getid()">Edit Multiple Records</button>
+        <!--<button id="update_checked" class="btn btn-secondary" onclick="getid()">Edit Multiple Records</button>-->
         <table id="example1" class="table table-bordered table-striped">
             <div class="msg" style="text-align: left; background-color:rgb(129, 197, 129);">{{ session('success') }}</div>
 
             <thead>
                 <tr>
-                    <th>Option</th>
+                    <!--<th>Option</th>-->
                     <th>Sr. #</th>
                     <th>Image</th>
                     <th>Name</th>
@@ -46,12 +121,12 @@
                 @endphp
                 @foreach($products as $key => $product)
                 <tr>
-                    <td class="text-right align-middle">
-                        <div class="form-check ml-4">
-                            <input class="form-check-input checkbox-sm" type="checkbox" id="cheek" value="{{$product->id}}" style="width:16px; height: 16px;">
-                        </div>
+                    <!--<td class="text-right align-middle">-->
+                    <!--    <div class="form-check ml-4">-->
+                    <!--        <input class="form-check-input checkbox-sm" type="checkbox" id="cheek" value="{{$product->id}}" style="width:16px; height: 16px;">-->
+                    <!--    </div>-->
 
-                    </td>
+                    <!--</td>-->
                     <th class="text-right align-middle">{{$key+1}}</th>
                     <td class="text-center align-middle"><img src="{{$product->image}}" class="rounded" height="70"
                             width="70" alt="">
@@ -109,18 +184,22 @@
 toastr.success("{!! Session::get('product_deleted') !!}");
 </script>
 @endif
+
 <script type="text/javascript">
     function getid(){
+        
         var arr = [];
         $("#cheek:checked").each(function(){
             arr.push($(this).val());
         });
         console.log(arr);
-        $.ajax({
+        jQuery.ajaxSetup({
+           alert(123);
             url: '/update-checked',
             type: 'get',
             data: {'id': arr},
             success: (function (response) {
+               
                 $('.oldCard').hide();
                 $('.newCard').html(response);
             })

@@ -18,4 +18,8 @@ class Area extends Model
         'coverage_km',
         'status'
     ];
+    
+    public function cities(){
+      return $this->hasOne('App\Models\City', 'id', 'city_id');  
+    }
 }

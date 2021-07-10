@@ -158,16 +158,16 @@
             </div>
 
             {{-- Location Status --}}
-            <div class="form-group row">
-                <label for="shop" class="col-sm-2 col-form-label">Location Status</label>
-                <div class="col-sm-6">
-                    <select class="form-control select2" name="location_status" onchange="showArea()" id="locationStatus">
-                        <option disabled selected hidden>Select Location Status</option>
-                        <option class="mt-2 p-5"  {{ ($product->location_status) == '0' ? 'selected' : ''}} value="0" >Area Specific</option>
-                        <option class="mt-2 p-5" {{ ($product->location_status) == '1' ? 'selected' : ''}} value="1">Over All</option>
-                    </select>
-                </div>
-            </div>
+            <!--<div class="form-group row">-->
+            <!--    <label for="shop" class="col-sm-2 col-form-label">Shops</label>-->
+            <!--    <div class="col-sm-6">-->
+            <!--        <select class="form-control select2" name="location_status" onchange="showArea()" id="locationStatus">-->
+            <!--            <option disabled selected hidden>Select Location Status</option>-->
+            <!--            <option class="mt-2 p-5"  {{ ($product->location_status) == '0' ? 'selected' : ''}} value="0" >Area Specific</option>-->
+            <!--            <option class="mt-2 p-5" {{ ($product->location_status) == '1' ? 'selected' : ''}} value="1">Over All</option>-->
+            <!--        </select>-->
+            <!--    </div>-->
+            <!--</div>-->
 
             <div class="form-group row">
                 <label for="product" class="col-sm-2 col-form-label">Total Sold</label>

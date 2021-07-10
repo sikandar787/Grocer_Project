@@ -12,6 +12,11 @@ use function GuzzleHttp\Promise\all;
 
 class AreaController extends Controller
 {
+    public function getCities()
+    {
+        $cities = City::get();
+        return view('admin.view-areas');
+    }
     public function addArea(Request $req)
    {
         $area = new Area();

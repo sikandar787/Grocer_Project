@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Shop;
 use App\Models\Product;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -17,7 +18,8 @@ class BannerController extends Controller
         $categories = Category::get();
         $shops = Shop::get();
         $products = Product::get();
-        return view('admin.add-banner')->with(compact('categories', 'shops', 'products'));
+        $cities = City::get();
+        return view('admin.add-banner')->with(compact('categories', 'shops', 'products', 'cities'));
     }
 
     public function addBanner(Request $req)
@@ -30,6 +32,7 @@ class BannerController extends Controller
                 'category_id' => 'required',
                 'shop_id' => 'required',
                 'product_id' => 'required',
+                'city_id' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
             $getUploadedName = HelperController::uplaodsingleImage($req->file('image'),'images/banners/');
@@ -39,6 +42,7 @@ class BannerController extends Controller
             $banner->category_id = $req->category_id;
             $banner->shop_id = $req->shop_id;
             $banner->product_id = $req->product_id;
+            $banner->city_id = $req->city_id;
             // return json_encode($banner);
             $banner->save();
         // $category->Create($req->except('_token'));
@@ -47,7 +51,7 @@ class BannerController extends Controller
 
     public function viewBanners()
     {
-        $banners = Banner::with('categories', 'shops', 'products')->orderBy('id','DESC')->get();
+        $banners = Banner::with('categories', 'shops', 'products', 'cities')->orderBy('id','DESC')->get();
         // return $banners;
         return view('admin.view-banners',compact('banners'));
     }
@@ -75,9 +79,10 @@ class BannerController extends Controller
         $categories = Category::get();
         $shops = Shop::get();
         $products = Product::get();
+        $cities = City::get();
         $banner =  Banner::find($id);
         // return $banner;
-        return view('admin.edit-banner', compact('banner', 'categories', 'shops', 'products'));
+        return view('admin.edit-banner', compact('banner', 'categories', 'shops', 'products', 'cities'));
 
     // }else{
     //         // return back()->with('privilege', 'Your do not have any privilege to add product.');
@@ -117,6 +122,7 @@ class BannerController extends Controller
             $banner->category_id = $req->category_id;
             $banner->shop_id = $req->shop_id;
             $banner->product_id = $req->product_id;
+            $banner->city_id = $req->city_id;
 
             $banner->save();
             DB::commit();

@@ -24,10 +24,11 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Urdu Name</th>
+                    <th>City</th>
                     {{-- <th>Description</th>
                     <th>Urdu Description</th> --}}
                     <th>Category</th>
-                    <th>Shop</th>
+                    <!--<th>Shop</th>-->
                     <th>Product</th>
                     {{-- <th>Maximum Purchase Limit</th>
                     <th>Weight</th>
@@ -50,10 +51,11 @@
                     </td>
                     <td class=" align-middle">{{$banner->name}}</td>
                     <td class=" align-middle">{{$banner->ur_name}}</td>
+                    <td class=" align-middle">{{$banner->cities->name}}</td>
                     {{-- <td class=" align-middle">{{$banner->description}}</td>
                     <td class=" align-middle">{{$banner->ur_description}}</td> --}}
                     <td class=" align-middle">{{$banner->categories->name}}</td>
-                    <td class=" align-middle">{{$banner->shops->name}}</td>
+                    <!--<td class=" align-middle">{{$banner->shops->name}}</td>-->
                     <td class=" align-middle">{{$banner->products->name}}</td>
                     {{-- <td class=" align-middle">{{$banner->max_limit}}</td>
                     <td class=" align-middle">{{$banner->weight}}</td>

@@ -22,7 +22,7 @@
                     <th>Sr. #</th>
                     <th>Name</th>
                     <th>Urdu Name</th>
-                    <th>City Id</th>
+                    <th>City</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Coverage Area (Km)</th>
@@ -40,7 +40,7 @@
                     </td>
                     <td class=" align-middle">{{$area->name}}</td>
                     <td class=" align-middle">{{$area->ur_name}}</td>
-                    <td class=" align-middle">{{$area->city_id}}</td>
+                    <td class=" align-middle">{{$area->cities->name}}</td>
                     <td class=" align-middle">{{$area->latitude}}</td>
                     <td class=" align-middle">{{$area->longitude}}</td>
                     <td class=" align-middle">{{$area->coverage_km}}</td>

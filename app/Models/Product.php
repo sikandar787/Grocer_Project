@@ -35,4 +35,8 @@ public $timestamps = false;
     public function units() {
         return $this->hasOne('App\Models\Unit', 'id', 'unit_id');
     }
+    
+    public function shops() {
+        return $this->hasOne('App\Models\Shop', 'id', 'shop_id');
+    }
 }
