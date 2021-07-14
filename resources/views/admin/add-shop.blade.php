@@ -183,9 +183,11 @@
         var loc = jQuery('#locationStatus').val();
         if(loc == 1){
             jQuery('.hide_data').hide();
+            jQuery('#map').hide();
         }
         else{
             jQuery('.hide_data').show();
+            jQuery('#map').show();
         }
     }
 </script>
