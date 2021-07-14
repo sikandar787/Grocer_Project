@@ -16,60 +16,7 @@
     <!-- /.card-header -->
     <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
         @csrf
-        <div class="card-body">
-
-            <!--<div class="form-group row">-->
-            <!--    <label for="price" class="col-sm-2 col-form-label">Price Filter</label>-->
-            <!--    <div class="col-sm-8">-->
-            <!--        <input type="text" name="min_price" placeholder="Min Price">-->
-            <!--        <input type="text" name="max_price" placeholder="Max Price">-->
-            <!--    </div>-->
-            <!--</div>-->
-            
-            <div class="form-group row">
-                <label for="status" class="col-sm-2 col-form-label">City Filter</label>
-                <div class="col-sm-6">
-                    <select class="select2 form-control" name="city_id">
-                        <option disabled selected hidden>
-                            Search City
-                        </option>
-                        @if($cities->count() > 0)
-                        @foreach($cities as $city)
-                        <option value="{{ $city->id }}">
-                            {{ $city->name }}
-                        </option>
-                        @endforeach
-                        @else
-                        <option>No Cities Found</option>
-                        @endif
-                        <!--list of status helper calss ma bana k loop kar lo.. wasay hlpr calss ki zarorat nh q k ik hi jaga us haonay hain. agr bar bar use krnay hain tw helper class ma bana lo. -->
-                    </select>
-                </div>
-            </div>
-            <!-- City filter end -->
-            
-            <div class="form-group row">
-                <label for="status" class="col-sm-2 col-form-label">Area Filter</label>
-                <div class="col-sm-6">
-                    <select class="select2 form-control" name="area_id">
-                        <option disabled selected hidden>
-                            Search Area
-                        </option>
-                        @if($areas->count() > 0)
-                        @foreach($areas as $area)
-                        <option value="{{ $area->id }}">
-                            {{ $area->name }}
-                        </option>
-                        @endforeach
-                        @else
-                        <option>No Areas Found</option>
-                        @endif
-                        <!--list of status helper calss ma bana k loop kar lo.. wasay hlpr calss ki zarorat nh q k ik hi jaga us haonay hain. agr bar bar use krnay hain tw helper class ma bana lo. -->
-                    </select>
-                </div>
-            </div>
-            <!-- Area filter end -->
-            
+        <div class="card-body">            
             <div class="form-group row">
                 <label for="price" class="col-sm-2 col-form-label">Price Filter</label>
                 <div class="col-sm-3">

@@ -16,6 +16,9 @@
 
     <!-- /.card-header -->
     <div class="card-body">
+    @if(Session::has('error'))
+        <div class="alert alert-danger ">{{session::get('error')}}</div>
+    @endif
         <table id="example1" class="table table-bordered table-striped">
             <div class="msg" style="text-align: left; background-color:rgb(129, 197, 129);">{{ session('msg') }}</div>
             <thead>

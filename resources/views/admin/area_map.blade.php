@@ -98,7 +98,7 @@
             data: {id:area},
             success: function(data){
                 jQuery.each(data, function(index, value){
-                    const myLatlng = { lat: value.latitude, lng: value.longitude };
+                    const myLatlng = { lat: parseFloat(value.latitude), lng: parseFloat(value.longitude) };
                     var marker = new google.maps.Marker({
                         position: myLatlng,
                         title:value.name,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\City;
+use App\Models\Area;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,8 +33,15 @@ class CityController extends Controller
 
     public function destroyCities($id)
     {
-        City::where('id',$id)->delete();
-         return back()->with('City_deleted', 'Your record has been deleted');
+        $cityAreas = Area::where('city_id', $id)->get();
+        if($cityAreas->isEmpty()){
+            City::where('id',$id)->delete();
+            return back()->with('City_deleted', 'Your record has been deleted');
+        }
+        else{
+            return back()->with('error', 'Delete Corresponding Areas before deleting this city');
+        }
+        
     }
 
     public function editCity($id)
