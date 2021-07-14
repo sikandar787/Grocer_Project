@@ -15,13 +15,39 @@
         $.ajax({
             url: 'get-area',
             type: 'get',
-            data: {id:cityId},
+            data: {id:city},
             success: function(data){
                 var html = '<option>Select Area</option>';
                 jQuery.each(data, function(index, value){
                     html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
                 });
                 $('.areas').empty().append(html);
+            }
+        });
+    }
+
+    //for edit shop page
+    function showUpdateArea(){
+        var cityId = jQuery('#citySelector').val();
+        var arr = cityId.split(',');
+        var city = arr[0];
+        // alert(city);
+        $.ajax({
+            url: 'edit-shop/'+city,
+            type: "GET",
+            data : {"_token":"{{ csrf_token() }}"},
+            dataType: "json",
+            // url: 'get-update-area',
+            // type: 'get',
+            // dataType: 'json',
+            // data: {"uid": "'+city+'"},
+            success: function(data){
+                alert(data);
+                // var html = '<option>Select Area</option>';
+                // jQuery.each(data, function(index, value){
+                //     html += '<option value="' + value.id + ',' + value.latitude + ',' + value.longitude + '">' + value.name + '</option>';
+                // });
+                // $('.areas').empty().append(html);
             }
         });
     }

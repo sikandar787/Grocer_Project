@@ -87,8 +87,9 @@ class ShopController extends Controller
         $cities = City::get();
         $areas = Area::get();
         $shop =  Shop::find($id);
-        // return $shop;
-        return view('admin.edit-shop', compact('shop', 'cities', 'areas'));
+        // $shop = DB::table('shops')->where('id', $id)->first();
+        // print_r($shop);
+        return view('admin.edit-shop', compact('shop', 'cities'));
 
     // }else{
     //         // return back()->with('privilege', 'Your do not have any privilege to add product.');
@@ -122,13 +123,8 @@ class ShopController extends Controller
             $shop->description = $req->description;
             $shop->ur_description = $req->ur_description;
             $shop->number = $req->number;
-            $shop->latitude = $req->latitude;
-            $shop->longitude = $req->longitude;
             $shop->address = $req->address;
             $shop->coverage_km = $req->coverage_km;
-            $shop->city_id = $req->city_id;
-            $shop->area_id = $req->area_id;
-            $shop->location_status = $req->location_status;
 
             // return $shop;
             $shop->save();
@@ -148,6 +144,17 @@ class ShopController extends Controller
         $cityID = $request->id;
         $areas = Area::where('city_id', '=', $cityID)->get();
         return $areas;
+    }
+
+    public function getUpdateArea(Request $request, $id){
+        return $id;
+        $areas = Area::where('city_id',$id)->get();
+        // return view('admin.view-products',compact('areas'));
+        return response()->json($areas);
+        // $cityID = $request->uid;
+        // return $cityID;
+        // $areas = Area::where('city_id', '=', $cityID)->get();
+        // return $areas;
     }
 
     public function statusUpdateShops( $id)

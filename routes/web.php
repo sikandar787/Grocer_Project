@@ -150,6 +150,7 @@ Route::get('/delete-shop/{id}',[ShopController::class,'deleteShop']);
 Route::get('/edit-shop/{id}',[ShopController::class,'editShop']);
 Route::post('/update-shop/{id}',[ShopController::class,'updateShop'])->name('update-shop');
 Route::get('get-area',[ShopController::class,'getArea']);
+Route::get('edit-shop/{id}',[ShopController::class,'getUpdateArea']);
 Route::get('shop/update-status/{id}',[ShopController::class,'statusUpdateShops']);
 Route::get('get-shops',[ShopController::class,'getShops']);
 
